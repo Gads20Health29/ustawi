@@ -1,5 +1,6 @@
 package com.health29.ustawi.view.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,17 +17,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.health29.ustawi.R;
+import com.health29.ustawi.utils.Util;
 
 public class LoginFragment extends Fragment {
 
     @BindView(R.id.mButtonNext)
     Button button;
 
+    @BindView(R.id.mLoginEditText)
+    EditText mLoginEditText;
+
+    @BindView(R.id.mPassWordEditText)
+    EditText mPassWordEditText;
+
      NavController mNavController;
-    View view;
+     View view;
+
+     Util util = new Util();
 
     public LoginFragment() {
         // Required empty public constructor
@@ -48,7 +59,39 @@ public class LoginFragment extends Fragment {
 
     @OnClick(R.id.mNoCount)
     public void launchRegistreFragment(){
-        mNavController.navigate(R.id.loginToRegistre1);
+        if (isValidate(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString())){
+
+            //Launch activity or fragment
+            mNavController.navigate(R.id.loginToRegistre1);
+        }else {
+            util.showToastMessage("Resolve Error");
+        }
+
+    }
+
+    //Verification of input form
+    public boolean isValidate(String email, String password){
+        boolean valid = true;
+        if (email.trim().isEmpty()){
+            mLoginEditText.setError("It's empty");
+            valid = false;
+        }else{
+            mLoginEditText.setError(null);
+        }
+
+        if (password.trim().isEmpty()){
+            mPassWordEditText.setError("It's empty");
+            valid = false;
+        }else{
+            mPassWordEditText.setError(null);
+        }
+
+        return valid;
+    }
+
+    //Launch activity methode
+    public void launchActivity(Context context, Class cls){
+
     }
 
 }
