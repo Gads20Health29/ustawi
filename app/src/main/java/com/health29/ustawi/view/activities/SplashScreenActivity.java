@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -47,7 +46,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-            launchActivity(SplashScreenActivity.this, ProfilChoiceActivity.class);
+            launchActivity(SplashScreenActivity.this, IdentificationActivity.class);
             }
         }, SPLASH_TIME);
     }
@@ -60,8 +59,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         mLottieAnimationView.cancelAnimation();
     }
 
-    public void launchActivity(Context context, Class object){
-        Intent intent = new Intent(context, object);
+    public void launchActivity(Context context, Class cls){
+        Intent intent = new Intent(context, cls);
         startActivity(intent);
         finish();
     }

@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.health29.ustawi.R;
 
-public class ProfilChoiceActivity extends AppCompatActivity {
+public class IdentificationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profil_choice);
+        setContentView(R.layout.activity_identification);
     }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.health29.ustawi.view.fragments.LoginFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/loginToRegistre1"
+            app:enterAnim="@anim/fade_in_left"
+            app:destination="@id/registre1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registre1Fragment"
+        android:name="com.health29.ustawi.view.fragments.Registre1Fragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_registre1">
+
+        <action
+            android:id="@+id/regirstre1Toregirstre2"
+            app:enterAnim="@anim/fade_in_left"
+            app:destination="@id/registre2Fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/registre2Fragment"
+        android:name="com.health29.ustawi.view.fragments.Registre2Fragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_registre2">
+
+    </fragment>
+</navigation>

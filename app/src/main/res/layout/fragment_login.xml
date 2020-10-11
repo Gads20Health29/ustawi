@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.LoginFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activities.IdentificationActivity">
+
+        <LinearLayout
+            android:id="@+id/mImageContent"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:orientation="vertical"
+            android:background="@drawable/bottom_circle"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:id="@+id/mImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:layout_marginTop="70dp"
+                android:textStyle="bold"
+                android:textColor="@color/cardview_light_background"
+                android:layout_marginLeft="150dp"
+                android:textSize="23sp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/mButtonsContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:layout_margin="30dp">
+
+            <EditText
+                android:id="@+id/mLoginEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/email"
+                android:paddingLeft="10dp"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/shape_button"/>
+
+            <EditText
+                android:id="@+id/mPassWordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:hint="@string/password"
+                android:paddingLeft="10dp"
+                android:inputType="textPassword"
+                android:background="@drawable/shape_button"/>
+
+            <TextView
+                android:id="@+id/mNoCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_count"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_margin="30dp"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/mButtonsContent">
+
+
+            <Button
+                android:id="@+id/mButtonNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:background="@drawable/button_shadow"
+                android:textColor="@color/cardview_light_background"
+                android:text="@string/login"/>
+
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</FrameLayout>
