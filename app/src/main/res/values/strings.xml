@@ -26,5 +26,6 @@
     <string name="title_drugs">Drugs</string>
     <string name="title_profile">Profile</string>
     <string name="title_activity_pharmacy">MainActivity</string>
+    <string name="add_new_drug">Add new Drug</string>
 
 </resources>

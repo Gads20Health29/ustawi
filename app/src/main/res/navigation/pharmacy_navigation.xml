@@ -6,15 +6,15 @@
     app:startDestination="@+id/navigation_drugs">
 
     <fragment
-        android:id="@+id/navigation_profile"
+        android:id="@+id/navigation_drugs"
         android:name="com.health29.ustawi.view.fragments.drugs.DrugsFragment"
-        android:label="@string/title_profile"
+        android:label="@string/title_drugs"
         tools:layout="@layout/fragment_drugs" />
 
     <fragment
-        android:id="@+id/navigation_drugs"
+        android:id="@+id/navigation_profile"
         android:name="com.health29.ustawi.view.fragments.profile.ProfileFragment"
-        android:label="@string/title_drugs"
+        android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 
 
