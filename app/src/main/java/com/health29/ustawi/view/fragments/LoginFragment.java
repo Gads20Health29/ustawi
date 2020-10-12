@@ -1,6 +1,7 @@
 package com.health29.ustawi.view.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 
 import com.health29.ustawi.R;
 import com.health29.ustawi.utils.Util;
+import com.health29.ustawi.view.activities.PharmacyActivity;
 
 public class LoginFragment extends Fragment {
 
@@ -49,6 +51,12 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_login, container, false);
+
+
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), PharmacyActivity.class);
+            startActivity(intent);
+        });
 
         //Butterkniff
         ButterKnife.bind(this, view);

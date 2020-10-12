@@ -31,23 +31,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<!--        <activity-->
-<!--            android:name=".view.activities.PharmacyActivity"-->
-<!--            android:label="@string/title_activity_pharmacy"></activity>-->
+        <activity
+            android:name=".view.activities.PharmacyActivity"
+            android:label="@string/title_activity_pharmacy"/>
         <activity
             android:name=".view.activities.IdentificationActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-<!--        <activity-->
-<!--            android:name=".view.activities.SplashScreenActivity"-->
-<!--            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
         <activity
-            android:name=".view.activities.PharmacyActivity"
+            android:name=".view.activities.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,6 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
