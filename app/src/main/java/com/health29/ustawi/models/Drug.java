@@ -4,17 +4,17 @@ package com.health29.ustawi.models;
  * Created by derrick.kaffo on 12/10/2020.
  * kaffoderrick@gmail.com
  */
-public class Pharmacy {
+public class Drug {
     private String name;
     private String price;
     private String category;
     private boolean available;
 
-    public Pharmacy() {
+    public Drug() {
 
     }
 
-    public Pharmacy(String name, String price, String category, boolean available) {
+    public Drug(String name, String price, String category, boolean available) {
         this.name = name;
         this.price = price;
         this.category = category;
