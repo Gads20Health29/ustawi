@@ -1,6 +1,7 @@
 package com.health29.ustawi.view.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,11 +23,10 @@ import android.widget.TextView;
 
 import com.health29.ustawi.R;
 import com.health29.ustawi.utils.Util;
+import com.health29.ustawi.view.activities.PharmacyActivity;
 
 public class LoginFragment extends Fragment {
 
-    @BindView(R.id.mButtonNext)
-    Button button;
 
     @BindView(R.id.mLoginEditText)
     EditText mLoginEditText;
@@ -38,6 +38,7 @@ public class LoginFragment extends Fragment {
      View view;
 
      Util util = new Util();
+    private Button mButton;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -50,6 +51,11 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_login, container, false);
 
+        mButton = view.findViewById(R.id.mButtonNext);
+        mButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), PharmacyActivity.class);
+            startActivity(intent);
+        });
         //Butterkniff
         ButterKnife.bind(this, view);
         mNavController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
