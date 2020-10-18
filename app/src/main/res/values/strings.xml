@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">USTAWI</string>
+
+    <string name="no_count">Don\'t have a count ?</string>
+    <string name="email">Your adress mail</string>
+    <string name="name">Your name</string>
+    <string name="mobile">Your mobile</string>
+    <string name="adress">Your adress</string>
+    <string name="location">Your location</string>
+    <string name="specialization">Your specialization</string>
+    <string name="bio">Your biographie</string>
+    <string name="type_count">Your type count</string>
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
+    <string name="login">Login</string>
+    <string name="password">Your password </string>
+    <string name="password_confirme">Your password confirme</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="save_directory_file">USTAWI</string>
+
+
+    <!--    Pharmacy-->
+    <string name="title_drugs">Drugs</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_activity_pharmacy">MainActivity</string>
+    <string name="add_new_drug">Add new Drug</string>
+    <string name="menu_title_consultations">Consultations</string>
+    <string name="patient_icon_content_desc">Patient Icon</string>
+
+</resources>

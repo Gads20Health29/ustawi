@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+apply plugin: "androidx.navigation.safeargs"
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        applicationId "com.health29.ustawi"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+
+def navigationVersion = '2.3.0'
+def lifecycleVersion = '2.0.0-alpha1'
+def butterkinfeVersion = '10.1.0'
+def googlePlayVersion = '16.0.0'
+def multidexVersion = '1.0.3'
+def hawkVersion = '2.0.1'
+def imageCropperVersion = '2.5.0'
+def glideVersion = '4.11.0'
+def dexterVersion = '5.0.0'
+def retrofitVersion = '2.4.0'
+def retrofitConvertGsonVersion = '2.2.0'
+def permissionDispatcherVersion = '3.2.0'
+def materialSearchBarVersion = '0.8.5'
+def lottieVersion = '3.4.4'
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui:$navigationVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigationVersion"
+
+    // Feature module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$navigationVersion"
+
+    // Butter knife data binding
+    implementation "com.jakewharton:butterknife:$butterkinfeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterkinfeVersion"
+
+    //Manage app context
+    implementation "com.android.support:multidex:$multidexVersion"
+
+    //Encrypting SharedPreference Data
+    implementation "com.orhanobut:hawk:$hawkVersion"
+
+    //TAKE PICTURE AND CROP IMAGE
+    implementation "com.theartofdev.edmodo:android-image-cropper:$imageCropperVersion"
+
+    //IMAGE LOADER
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+    //DEXTER FOR PERMISSIONS
+    implementation "com.karumi:dexter:$dexterVersion"
+
+
+    //Network
+     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+     implementation "com.squareup.retrofit2:converter-gson:$retrofitConvertGsonVersion"
+
+    //MaterialSearchBar
+     implementation "com.github.mancj:MaterialSearchBar:$materialSearchBarVersion"
+
+    //Lottie animation
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+
+    //Google services
+    implementation "com.google.android.gms:play-services-maps:$googlePlayVersion"
+    implementation "com.google.android.gms:play-services-location:$googlePlayVersion"
+    implementation "com.github.hotchemi:permissionsdispatcher:$permissionDispatcherVersion"
+    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:$permissionDispatcherVersion"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}
