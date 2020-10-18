@@ -27,5 +27,7 @@
     <string name="title_profile">Profile</string>
     <string name="title_activity_pharmacy">MainActivity</string>
     <string name="add_new_drug">Add new Drug</string>
+    <string name="menu_title_consultations">Consultations</string>
+    <string name="patient_icon_content_desc">Patient Icon</string>
 
 </resources>

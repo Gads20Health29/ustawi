@@ -8,6 +8,7 @@
     <color name="colorShadowButton">#99ffffff</color>
 
     <color name="primaryDark">#292b3d</color>
+    <color name="fadedDark">#6e6e6e</color>
     <color name="graylight">#fafafa</color>
     <color name="startblue">#09c6df</color>
     <color name="endblue">#0bcce6</color>

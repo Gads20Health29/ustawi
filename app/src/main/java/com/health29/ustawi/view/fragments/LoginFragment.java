@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.health29.ustawi.R;
 import com.health29.ustawi.utils.Util;
+import com.health29.ustawi.view.activities.DoctorActivity;
 import com.health29.ustawi.view.activities.PharmacyActivity;
 
 public class LoginFragment extends Fragment {
@@ -38,6 +39,7 @@ public class LoginFragment extends Fragment {
      View view;
 
      Util util = new Util();
+
     private Button mButton;
 
     public LoginFragment() {
@@ -54,6 +56,7 @@ public class LoginFragment extends Fragment {
         mButton = view.findViewById(R.id.mButtonNext);
         mButton.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), PharmacyActivity.class);
+//            Intent intent = new Intent(getActivity(), DoctorActivity.class);
             startActivity(intent);
         });
         //Butterkniff
