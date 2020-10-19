@@ -17,6 +17,7 @@ public class DoctorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_doctor);
 
         BottomNavigationView bottomNav = findViewById(R.id.doctor_nav_view);

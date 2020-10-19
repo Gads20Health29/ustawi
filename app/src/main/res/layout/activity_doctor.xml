@@ -7,6 +7,8 @@
     tools:context=".view.activities.DoctorActivity">
 
 
+
+
     <FrameLayout
         android:id="@+id/doctor_fragment_container"
         android:layout_width="match_parent"
