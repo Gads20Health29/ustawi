@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.health29.ustawi.R;
 import com.health29.ustawi.models.Drug;
-import com.health29.ustawi.utils.Util;
 import com.health29.ustawi.view.recview.DrugAdapter;
 
 import java.util.List;

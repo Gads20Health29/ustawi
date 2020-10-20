@@ -33,7 +33,7 @@ public class ConsultationFragement extends Fragment {
         consultationModel.setConsultationReplyCount(14);
 
          View view = inflater.inflate(R.layout.fragment_consultation, container,false);
-        mRecyclerView = view.findViewById(R.id.consultation_recyclerview);
+        mRecyclerView = view.findViewById(R.id.doctorRecycleView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mConsultationModelList = new ArrayList<>();
