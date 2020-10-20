@@ -55,8 +55,8 @@ public class LoginFragment extends Fragment {
 
         mButton = view.findViewById(R.id.mButtonNext);
         mButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), PharmacyActivity.class);
-//            Intent intent = new Intent(getActivity(), DoctorActivity.class);
+//            Intent intent = new Intent(getActivity(), PharmacyActivity.class);
+            Intent intent = new Intent(getActivity(), DoctorActivity.class);
             startActivity(intent);
         });
         //Butterkniff
