@@ -68,7 +68,7 @@ public class Registre1Fragment extends Fragment {
         typeCount.add("User");
         typeCount.add("Pharmacy");
         typeCount.add("Doctor");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
             android.R.layout.simple_spinner_item, typeCount);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);

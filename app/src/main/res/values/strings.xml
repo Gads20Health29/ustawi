@@ -2,19 +2,19 @@
     <string name="app_name">USTAWI</string>
 
     <string name="no_count">Don\'t have a count ?</string>
-    <string name="email">Your adress mail</string>
+    <string name="email">Your address mail</string>
     <string name="name">Your name</string>
     <string name="mobile">Your mobile</string>
-    <string name="adress">Your adress</string>
+    <string name="address">Your address</string>
     <string name="location">Your location</string>
     <string name="specialization">Your specialization</string>
-    <string name="bio">Your biographie</string>
-    <string name="type_count">Your type count</string>
+    <string name="bio">Your biography</string>
+    <string name="type_count">User type</string>
     <string name="next">Next</string>
     <string name="finish">Finish</string>
     <string name="login">Login</string>
     <string name="password">Your password </string>
-    <string name="password_confirme">Your password confirme</string>
+    <string name="password_confirme">Your password confirm</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

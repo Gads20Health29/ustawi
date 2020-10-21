@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
     tools:context=".view.fragments.Registre1Fragment">
 
     <RelativeLayout
@@ -47,6 +48,9 @@
                 android:hint="@string/email"
                 android:paddingLeft="10dp"
                 android:inputType="textEmailAddress"
+                android:textColor="@color/primaryDark"
+                android:textSize="@dimen/edittext_text_size"
+                android:textColorHint="@color/fadedDark"
                 android:background="@drawable/shape_button"/>
 
             <EditText
@@ -57,6 +61,9 @@
                 android:hint="@string/password"
                 android:paddingLeft="10dp"
                 android:inputType="textPassword"
+                android:textColor="@color/primaryDark"
+                android:textColorHint="@color/fadedDark"
+                android:textSize="@dimen/edittext_text_size"
                 android:background="@drawable/shape_button"/>
 
 
@@ -68,6 +75,9 @@
                 android:hint="@string/password_confirme"
                 android:paddingLeft="10dp"
                 android:inputType="textPassword"
+                android:textColor="@color/primaryDark"
+                android:textColorHint="@color/fadedDark"
+                android:textSize="@dimen/edittext_text_size"
                 android:background="@drawable/shape_button"/>
 
         <LinearLayout
@@ -81,6 +91,7 @@
                 android:id="@+id/mTypeCountText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/fadedDark"
                 android:textSize="15sp"
                 android:text="@string/type_count"/>
 
@@ -88,6 +99,7 @@
                 android:id="@+id/mSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/fadedDark"
                 android:layout_marginLeft="10dp"/>
 
         </LinearLayout>
@@ -102,7 +114,8 @@
             android:layout_margin="30dp"
             android:orientation="horizontal"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/mButtonsContent">
+            android:layout_below="@+id/mButtonsContent"
+            android:layout_alignParentEnd="true">
 
 
             <Button
