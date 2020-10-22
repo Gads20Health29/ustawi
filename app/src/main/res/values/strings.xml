@@ -29,5 +29,13 @@
     <string name="add_new_drug">Add new Drug</string>
     <string name="menu_title_consultations">Consultations</string>
     <string name="patient_icon_content_desc">Patient Icon</string>
+    <string name="text_detail">Detail:</string>
+    <string name="text_title">Title:</string>
+    <string name="consultation_details">Consultation Details</string>
+    <string name="consultation_title">Consultation Title</string>
+    <string name="replies">Replies:</string>
+    <string name="text_replies">Replies</string>
+    <string name="add_replay">Add Replay</string>
+    <string name="send_replay">Send</string>
 
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="text_title" type="id"></item>
+    <item name="text_consultation_title" type="id"></item>
+    <item name="text_consultation_detail" type="id"></item>
+    <item name="text_detail" type="id"></item>
+</resources>

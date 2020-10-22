@@ -18,7 +18,7 @@ import com.health29.ustawi.models.ConsultationModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConsultationFragement extends Fragment {
+public class ConsultationFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -27,7 +27,7 @@ public class ConsultationFragement extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ConsultationModel consultationModel = new ConsultationModel();
+        ConsultationModel consultationModel = new ConsultationModel("","");
         consultationModel.setConsultationTitle("This is a test title");
         consultationModel.setConsultationDetails("This is a test detail");
         consultationModel.setConsultationReplyCount(14);
@@ -42,6 +42,7 @@ public class ConsultationFragement extends Fragment {
 
         mAdapter = new ConsultationRecyclerViewAdapter(mConsultationModelList, getContext());
         mRecyclerView.setAdapter(mAdapter);
+
         return view;
     }
 }

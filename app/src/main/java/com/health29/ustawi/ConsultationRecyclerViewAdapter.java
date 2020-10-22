@@ -1,7 +1,7 @@
 package com.health29.ustawi;
 
 import android.content.Context;
-import android.text.Layout;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.health29.ustawi.models.ConsultationModel;
+import com.health29.ustawi.view.activities.AddConsultationActivity;
 
 import java.util.List;
 
@@ -49,6 +50,7 @@ public class ConsultationRecyclerViewAdapter extends RecyclerView.Adapter<Consul
         holder.consultationTitle.setText(consultationTitle);
         holder.consultationDetail.setText(consultationDetail);
         holder.consultationReplyCount.setText(consultationReplyCount);
+        holder.mCurrentPosition = position;
     }
 
     @Override
@@ -60,12 +62,21 @@ public class ConsultationRecyclerViewAdapter extends RecyclerView.Adapter<Consul
         TextView consultationTitle;
         TextView consultationDetail;
         TextView consultationReplyCount;
+        public int mCurrentPosition;
+        public int mId;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             consultationTitle = itemView.findViewById(R.id.consultation_title);
             consultationDetail = itemView.findViewById(R.id.consultation_detail);
             consultationReplyCount = itemView.findViewById(R.id.consultation_replies_count);
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, AddConsultationActivity.class);
+                    intent.putExtra(AddConsultationActivity.CONSULTATION_POSITION, mId);
+                    mContext.startActivity(intent);
+                }
+            });
         }
     }
 }
