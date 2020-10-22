@@ -64,13 +64,15 @@ public class LoginFragment extends Fragment {
 
     @OnClick(R.id.mNoCount)
     public void launchRegistreFragment(){
-        if (isValidate(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString())){
+        mNavController.navigate(R.id.loginToRegistre1);
 
-            //Launch activity or fragment
-            mNavController.navigate(R.id.loginToRegistre1);
-        }else {
-            util.showToastMessage("Resolve Error");
-        }
+//        if (isValidate(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString())){
+//
+//            //Launch activity or fragment
+//            mNavController.navigate(R.id.loginToRegistre1);
+//        }else {
+//            util.showToastMessage("Resolve Error");
+//        }
 
     }
 
