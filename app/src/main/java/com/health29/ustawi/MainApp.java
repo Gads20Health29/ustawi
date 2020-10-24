@@ -8,6 +8,7 @@ import com.orhanobut.hawk.Hawk;
 
 import java.io.File;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.multidex.MultiDex;
 
 public class MainApp extends Application {
@@ -22,7 +23,9 @@ public class MainApp extends Application {
 
         mFolder = createFolder(getResources()
                 .getString(R.string.save_directory_file));
+
     }
+
 
 
     private static File createFolder(String name) {

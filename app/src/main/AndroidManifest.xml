@@ -32,6 +32,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.activities.AddConsultationActivity"></activity>
+        <activity android:name=".view.activities.ReplayActivity" />
         <activity android:name=".view.activities.DoctorActivity" />
         <activity
             android:name=".view.activities.PharmacyActivity"

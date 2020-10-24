@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.health29.ustawi.view.activities.AddConsultationActivity;
 import com.health29.ustawi.R;
 import com.health29.ustawi.utils.Util;
 import com.health29.ustawi.view.activities.DoctorActivity;

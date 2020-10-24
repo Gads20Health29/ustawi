@@ -20,7 +20,7 @@
         android:layout_gravity="bottom|right|end"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginBottom="80dp"
-        android:contentDescription="@string/add_new_drug"
+        android:contentDescription="@string/add_consultation_fab"
         app:backgroundTint="#4bb6ef" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

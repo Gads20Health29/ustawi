@@ -13,78 +13,86 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradientbackground"
+        android:background="@color/white"
         android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/mImageContent"
             android:layout_width="match_parent"
-            android:layout_height="161dp">
+            android:layout_height="191dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/bottom_circle"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="389dp"
+                android:layout_height="161dp">
 
 
-            <TextView
-                android:id="@+id/text_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_title"
-                android:textColor="#fff"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.143"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.155" />
+                <TextView
+                    android:id="@+id/text_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_title"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.144"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.333" />
 
-            <TextView
-                android:id="@+id/text_consultation_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/consultation_title"
-                android:textColor="#fff"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.31"
-                app:layout_constraintStart_toEndOf="@+id/text_title"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.155" />
+                <TextView
+                    android:id="@+id/text_consultation_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/consultation_title"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.311"
+                    app:layout_constraintStart_toEndOf="@+id/text_title"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.333" />
 
-            <TextView
-                android:id="@+id/text_consultation_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/consultation_details"
-                android:textColor="#fff"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.295"
-                app:layout_constraintStart_toEndOf="@+id/text_detail"
-                app:layout_constraintTop_toBottomOf="@+id/text_consultation_title"
-                app:layout_constraintVertical_bias="0.35" />
+                <TextView
+                    android:id="@+id/text_consultation_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/consultation_details"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.296"
+                    app:layout_constraintStart_toEndOf="@+id/text_detail"
+                    app:layout_constraintTop_toBottomOf="@+id/text_consultation_title"
+                    app:layout_constraintVertical_bias="0.518" />
 
-            <TextView
-                android:id="@+id/text_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_detail"
-                android:textColor="#F8F5F5"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/text_title"
-                app:layout_constraintTop_toBottomOf="@+id/text_title"
-                app:layout_constraintVertical_bias="0.35" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/text_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_detail"
+                    android:textColor="#F8F5F5"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/text_title"
+                    app:layout_constraintTop_toBottomOf="@+id/text_title"
+                    app:layout_constraintVertical_bias="0.519" />
 
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="62dp"

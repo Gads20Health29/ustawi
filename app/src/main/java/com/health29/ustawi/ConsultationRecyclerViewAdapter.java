@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.health29.ustawi.models.ConsultationModel;
-import com.health29.ustawi.view.activities.AddConsultationActivity;
+import com.health29.ustawi.view.activities.ReplayActivity;
 
 import java.util.List;
 
@@ -72,8 +72,8 @@ public class ConsultationRecyclerViewAdapter extends RecyclerView.Adapter<Consul
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, AddConsultationActivity.class);
-                    intent.putExtra(AddConsultationActivity.CONSULTATION_POSITION, mId);
+                    Intent intent = new Intent(mContext, ReplayActivity.class);
+                    intent.putExtra(ReplayActivity.CONSULTATION_POSITION, mId);
                     mContext.startActivity(intent);
                 }
             });

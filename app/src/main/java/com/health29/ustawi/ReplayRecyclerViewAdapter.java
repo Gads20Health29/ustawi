@@ -13,12 +13,12 @@ import com.health29.ustawi.models.ReplayModel;
 
 import java.util.List;
 
-public class RepliesRecyclerViewAdapter extends RecyclerView.Adapter<RepliesRecyclerViewAdapter.ViewHolder>  {
+public class ReplayRecyclerViewAdapter extends RecyclerView.Adapter<ReplayRecyclerViewAdapter.ViewHolder>  {
   private final Context mContext;
   private final   LayoutInflater mLayoutInflater;
   private final List<ReplayModel> mReplayModelList;
 
-    public RepliesRecyclerViewAdapter(Context pContext, List<ReplayModel> pReplayModelList) {
+    public ReplayRecyclerViewAdapter(Context pContext, List<ReplayModel> pReplayModelList) {
         mContext = pContext;
         mReplayModelList = pReplayModelList;
         mLayoutInflater = LayoutInflater.from(mContext);

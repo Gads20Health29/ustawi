@@ -14,7 +14,7 @@
     <string name="finish">Finish</string>
     <string name="login">Login</string>
     <string name="password">Your password </string>
-    <string name="password_confirme">Your password confirm</string>
+    <string name="password_confirm">Your password confirm</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -37,5 +37,10 @@
     <string name="text_replies">Replies</string>
     <string name="add_replay">Add Replay</string>
     <string name="send_replay">Send</string>
+    <string name="add_consultation_title">Add Consultation Title</string>
+    <string name="add_consultation_detail">Add Consultation Detail</string>
+    <string name="add_consultation">Add</string>
+    <string name="add_consultation_fab">Add Consultation fab</string>
+    <string name="add_the_consultation">Add Consultation</string>
 
 </resources>
