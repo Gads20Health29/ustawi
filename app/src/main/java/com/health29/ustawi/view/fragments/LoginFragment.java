@@ -20,7 +20,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.health29.ustawi.R;
 import com.health29.ustawi.utils.Util;
 import com.health29.ustawi.view.activities.DoctorActivity;
@@ -39,7 +47,8 @@ public class LoginFragment extends Fragment {
      View view;
 
      Util util = new Util();
-
+     FirebaseFirestore firebaseFirestore;
+    FirebaseAuth firebaseAuth;
     private Button mButton;
 
     public LoginFragment() {
@@ -50,33 +59,39 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_login, container, false);
 
         mButton = view.findViewById(R.id.mButtonNext);
         mButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), PharmacyActivity.class);
-//            Intent intent = new Intent(getActivity(), DoctorActivity.class);
-            startActivity(intent);
+           launchActivity();
         });
         //Butterkniff
         ButterKnife.bind(this, view);
         mNavController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         return view;
+
+
     }
 
 
     @OnClick(R.id.mNoCount)
     public void launchRegistreFragment(){
-        if (isValidate(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString())){
-
             //Launch activity or fragment
             mNavController.navigate(R.id.loginToRegistre1);
-        }else {
-            util.showToastMessage("Resolve Error");
-        }
 
     }
+    @OnClick(R.id.mNoCount1)
+    public void launchRegistreFragment1(){
+        //Launch activity or fragment
+        mNavController.navigate(R.id.action_loginFragment_to_registre2Fragment);
+
+    }
+
+
+
 
     //Verification of input form
     public boolean isValidate(String email, String password){
@@ -99,8 +114,47 @@ public class LoginFragment extends Fragment {
     }
 
     //Launch activity methode
-    public void launchActivity(Context context, Class cls){
+    public void launchActivity(){
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseFirestore=FirebaseFirestore.getInstance();
+        mLoginEditText = view.findViewById(R.id.mLoginEditText);
+        mPassWordEditText=view.findViewById(R.id.mPassWordEditText);
+
+        firebaseAuth.signInWithEmailAndPassword(mLoginEditText.getText().toString(),mPassWordEditText.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                Toast.makeText(getActivity(),"Logged In Successfully ",Toast.LENGTH_LONG).show();
+                checkUserAccessLevel(authResult.getUser().getUid());
+            }
+        });
+        
 
     }
 
+    private void checkUserAccessLevel(String uid) {
+        DocumentReference df = firebaseFirestore.collection("Users").document(uid);
+        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if (documentSnapshot.getString("isPharmacy") != null){
+                        startActivity(new Intent(getActivity(),PharmacyActivity.class));
+
+                    }
+                    if (documentSnapshot.getString("isUser") != null){
+                    startActivity(new Intent(getActivity(),DoctorActivity.class));
+
+                }
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onStart() {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+
+        }
+        super.onStart();
+    }
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "817302545726",
+    "firebase_url": "https://ustawi-aae00.firebaseio.com",
+    "project_id": "ustawi-aae00",
+    "storage_bucket": "ustawi-aae00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817302545726:android:b71e82ab3a5320f3f7b86f",
+        "android_client_info": {
+          "package_name": "com.health29.ustawi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817302545726-rm985seol89bvh7ntfom8rems4of4pfc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdAKY9fK5T2Ex1ZXUewVxrqQ2jB5LC23Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817302545726-rm985seol89bvh7ntfom8rems4of4pfc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

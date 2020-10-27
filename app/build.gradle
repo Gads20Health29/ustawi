@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.1"
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.health29.ustawi"
@@ -45,11 +46,16 @@ def permissionDispatcherVersion = '3.2.0'
 def materialSearchBarVersion = '0.8.5'
 def lottieVersion = '3.4.4'
 
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
 
+    implementation platform('com.google.firebase:firebase-bom:25.12.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-firestore:21.7.1'
     //Navigation
     implementation "androidx.navigation:navigation-fragment:$navigationVersion"
     implementation "androidx.navigation:navigation-ui:$navigationVersion"
@@ -59,6 +65,8 @@ dependencies {
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
 
     // Testing Navigation
+    implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.google.firebase:firebase-firestore:17.1.2'
     androidTestImplementation "androidx.navigation:navigation-testing:$navigationVersion"
 
     // Feature module Support
@@ -86,11 +94,11 @@ dependencies {
 
 
     //Network
-     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-     implementation "com.squareup.retrofit2:converter-gson:$retrofitConvertGsonVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitConvertGsonVersion"
 
     //MaterialSearchBar
-     implementation "com.github.mancj:MaterialSearchBar:$materialSearchBarVersion"
+    implementation "com.github.mancj:MaterialSearchBar:$materialSearchBarVersion"
 
     //Lottie animation
     implementation "com.airbnb.android:lottie:$lottieVersion"

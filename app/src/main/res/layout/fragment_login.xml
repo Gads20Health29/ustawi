@@ -70,11 +70,22 @@
                 android:id="@+id/mNoCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/no_count"
+                android:text="Create Account as A User"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/mNoCount1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Account as A Doctor"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp" />
+
         </LinearLayout>
 
 

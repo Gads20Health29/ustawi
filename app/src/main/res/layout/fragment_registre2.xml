@@ -69,6 +69,15 @@
                 android:paddingLeft="10dp"
                 android:inputType="text"
                 android:background="@drawable/shape_button"/>
+            <EditText
+                android:id="@+id/mpasswordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:hint="Enter password"
+                android:paddingLeft="10dp"
+                android:inputType="text"
+                android:background="@drawable/shape_button"/>
 
             <EditText
                 android:id="@+id/mLocationEditText"
@@ -86,19 +95,28 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-
                 <TextView
                     android:id="@+id/mSpecializationText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
                     android:text="@string/specialization"/>
+                <TextView
+                    android:id="@+id/mTypeCountText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/type_count"/>
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/mSpinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="1dp"
+                  />
+
+
 
             </LinearLayout>
 
@@ -134,7 +152,9 @@
                 android:background="@drawable/button_shadow"
                 android:textSize="15sp"
                 android:textColor="@color/cardview_light_background"
-                android:text="@string/finish"/>
+                android:text="@string/finish"
+
+                />
 
 
 

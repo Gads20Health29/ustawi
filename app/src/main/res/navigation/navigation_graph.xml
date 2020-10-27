@@ -14,6 +14,10 @@
             android:id="@+id/loginToRegistre1"
             app:enterAnim="@anim/fade_in_left"
             app:destination="@id/registre1Fragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registre2Fragment"
+            app:destination="@id/registre2Fragment" />
+
     </fragment>
     <fragment
         android:id="@+id/registre1Fragment"
@@ -24,6 +28,12 @@
         <action
             android:id="@+id/regirstre1Toregirstre2"
             app:enterAnim="@anim/fade_in_left"
+            app:destination="@id/registre2Fragment" />
+        <action
+            android:id="@+id/action_registre1Fragment_to_registre2Fragment"
+            app:destination="@id/registre2Fragment" />
+        <action
+            android:id="@+id/action_registre1Fragment_to_registre2Fragment2"
             app:destination="@id/registre2Fragment" />
 
     </fragment>
