@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.health29.ustawi.ConsultationRecyclerViewAdapter;
+import com.health29.ustawi.view.recview.ConsultationRecyclerViewAdapter;
 import com.health29.ustawi.R;
 import com.health29.ustawi.models.ConsultationModel;
 import com.health29.ustawi.view.activities.AddConsultationActivity;

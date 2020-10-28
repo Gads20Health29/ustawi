@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.health29.ustawi.R;
-import com.health29.ustawi.ReplayRecyclerViewAdapter;
+import com.health29.ustawi.view.recview.ReplayRecyclerViewAdapter;
 import com.health29.ustawi.models.ConsultationModel;
 import com.health29.ustawi.models.ReplayModel;
 

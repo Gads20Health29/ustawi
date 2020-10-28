@@ -21,12 +21,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 android:orientation="vertical">
+
                 <ImageView
-                    android:layout_marginTop="45dp"
-                    android:layout_gravity="center_horizontal"
                     android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/photocercle"/>
+                    android:layout_height="160dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="45dp"
+                    android:src="@drawable/photocercle" />
                 <TextView
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center_horizontal"

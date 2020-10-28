@@ -42,5 +42,11 @@
     <string name="add_consultation">Add</string>
     <string name="add_consultation_fab">Add Consultation fab</string>
     <string name="add_the_consultation">Add Consultation</string>
+    <string name="doctors_name">Doctors Name</string>
+    <string name="doctors_image">doctors image</string>
+    <string name="doctor_email">Doctor Email</string>
+    <string name="doctor_phone">Doctor Phone</string>
+    <string name="doctor_specialization">Doctor Specialization</string>
+    <string name="currently_working_at">Currently Working At</string>
 
 </resources>

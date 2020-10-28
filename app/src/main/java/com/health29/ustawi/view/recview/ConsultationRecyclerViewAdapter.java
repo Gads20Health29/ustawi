@@ -1,4 +1,4 @@
-package com.health29.ustawi;
+package com.health29.ustawi.view.recview;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.health29.ustawi.R;
 import com.health29.ustawi.models.ConsultationModel;
 import com.health29.ustawi.view.activities.ReplayActivity;
 
