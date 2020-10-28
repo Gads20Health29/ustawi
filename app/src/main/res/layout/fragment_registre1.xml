@@ -46,6 +46,9 @@
                 android:layout_height="50dp"
                 android:hint="@string/email"
                 android:paddingLeft="10dp"
+                android:textSize="@dimen/edittext_text_size"
+                android:textColorHint="@color/fadedDark"
+                android:textColor="@color/primaryDark"
                 android:inputType="textEmailAddress"
                 android:background="@drawable/shape_button"/>
 
@@ -56,6 +59,9 @@
                 android:layout_marginTop="20dp"
                 android:hint="@string/password"
                 android:paddingLeft="10dp"
+                android:textSize="@dimen/edittext_text_size"
+                android:textColorHint="@color/fadedDark"
+                android:textColor="@color/primaryDark"
                 android:inputType="textPassword"
                 android:background="@drawable/shape_button"/>
 
@@ -67,6 +73,9 @@
                 android:layout_marginTop="20dp"
                 android:hint="@string/password_confirme"
                 android:paddingLeft="10dp"
+                android:textSize="@dimen/edittext_text_size"
+                android:textColorHint="@color/fadedDark"
+                android:textColor="@color/primaryDark"
                 android:inputType="textPassword"
                 android:background="@drawable/shape_button"/>
 

@@ -46,9 +46,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/email"
-                android:textColorHint="@color/fadedDark"
                 android:paddingLeft="10dp"
                 android:textSize="@dimen/edittext_text_size"
+                android:textColorHint="@color/fadedDark"
                 android:textColor="@color/primaryDark"
                 android:inputType="textEmailAddress"
                 android:background="@drawable/shape_button"/>
