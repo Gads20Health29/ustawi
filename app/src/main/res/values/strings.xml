@@ -2,19 +2,19 @@
     <string name="app_name">USTAWI</string>
 
     <string name="no_count">Don\'t have a count ?</string>
-    <string name="email">Your adress mail</string>
+    <string name="email">Enter email</string>
     <string name="name">Your name</string>
     <string name="mobile">Your mobile</string>
-    <string name="adress">Your adress</string>
+    <string name="address">Your address</string>
     <string name="location">Your location</string>
     <string name="specialization">Your specialization</string>
-    <string name="bio">Your biographie</string>
-    <string name="type_count">Your type count</string>
+    <string name="bio">Your biography</string>
+    <string name="type_count">User type</string>
     <string name="next">Next</string>
     <string name="finish">Finish</string>
     <string name="login">Login</string>
-    <string name="password">Your password </string>
-    <string name="password_confirme">Your password confirme</string>
+    <string name="password">Enter password</string>
+    <string name="password_confirm">Confirm password</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -29,5 +29,24 @@
     <string name="add_new_drug">Add new Drug</string>
     <string name="menu_title_consultations">Consultations</string>
     <string name="patient_icon_content_desc">Patient Icon</string>
+    <string name="text_detail">Detail:</string>
+    <string name="text_title">Title:</string>
+    <string name="consultation_details">Consultation Details</string>
+    <string name="consultation_title">Consultation Title</string>
+    <string name="replies">Replies:</string>
+    <string name="text_replies">Replies</string>
+    <string name="add_replay">Add Replay</string>
+    <string name="send_replay">Send</string>
+    <string name="add_consultation_title">Add Consultation Title</string>
+    <string name="add_consultation_detail">Add Consultation Detail</string>
+    <string name="add_consultation">Add</string>
+    <string name="add_consultation_fab">Add Consultation fab</string>
+    <string name="add_the_consultation">Add Consultation</string>
+    <string name="doctors_name">Doctors Name</string>
+    <string name="doctors_image">doctors image</string>
+    <string name="doctor_email">Doctor Email</string>
+    <string name="doctor_phone">Doctor Phone</string>
+    <string name="doctor_specialization">Doctor Specialization</string>
+    <string name="currently_working_at">Currently Working At</string>
 
 </resources>

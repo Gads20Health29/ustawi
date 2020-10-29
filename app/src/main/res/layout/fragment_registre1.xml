@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
     tools:context=".view.fragments.Registre1Fragment">
 
     <RelativeLayout
@@ -71,12 +72,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
-                android:hint="@string/password_confirme"
+                android:hint="@string/password_confirm"
                 android:paddingLeft="10dp"
-                android:textSize="@dimen/edittext_text_size"
-                android:textColorHint="@color/fadedDark"
-                android:textColor="@color/primaryDark"
                 android:inputType="textPassword"
+                android:textColor="@color/primaryDark"
+                android:textColorHint="@color/fadedDark"
+                android:textSize="@dimen/edittext_text_size"
                 android:background="@drawable/shape_button"/>
 
         <LinearLayout
@@ -90,13 +91,16 @@
                 android:id="@+id/mTypeCountText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/primaryDark"
                 android:textSize="15sp"
                 android:text="@string/type_count"/>
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/mSpinner"
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/fadedDark"
                 android:layout_marginLeft="10dp"/>
 
         </LinearLayout>
@@ -111,7 +115,8 @@
             android:layout_margin="30dp"
             android:orientation="horizontal"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/mButtonsContent">
+            android:layout_below="@+id/mButtonsContent"
+            android:layout_alignParentEnd="true">
 
 
             <Button

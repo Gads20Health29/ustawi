@@ -4,11 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import com.health29.ustawi.R;
 import com.health29.ustawi.utils.Util;
 import com.health29.ustawi.view.activities.DoctorActivity;
@@ -72,7 +70,6 @@ public class LoginFragment extends Fragment {
         mNavController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         return view;
 
-
     }
 
 
@@ -80,7 +77,6 @@ public class LoginFragment extends Fragment {
     public void launchRegistreFragment(){
             //Launch activity or fragment
             mNavController.navigate(R.id.loginToRegistre1);
-
     }
     @OnClick(R.id.mNoCount1)
     public void launchRegistreFragment1(){
@@ -108,7 +104,6 @@ public class LoginFragment extends Fragment {
         }else{
             mPassWordEditText.setError(null);
         }
-
         return valid;
     }
 
@@ -119,15 +114,16 @@ public class LoginFragment extends Fragment {
         mLoginEditText = view.findViewById(R.id.mLoginEditText);
         mPassWordEditText=view.findViewById(R.id.mPassWordEditText);
 
-        firebaseAuth.signInWithEmailAndPassword(mLoginEditText.getText().toString(),mPassWordEditText.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                Toast.makeText(getActivity(),"Logged In Successfully ",Toast.LENGTH_LONG).show();
-                checkUserAccessLevel(authResult.getUser().getUid());
-            }
-        });
-        
+        if (isValidate(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString())){
 
+            firebaseAuth.signInWithEmailAndPassword(mLoginEditText.getText().toString(),mPassWordEditText.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    Toast.makeText(getActivity(),"Logged In Successfully ",Toast.LENGTH_LONG).show();
+                    checkUserAccessLevel(authResult.getUser().getUid());
+                }
+            });
+        }
     }
 
     private void checkUserAccessLevel(String uid) {
@@ -136,14 +132,11 @@ public class LoginFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                     if (documentSnapshot.getString("isPharmacy") != null){
-                        startActivity(new Intent(getActivity(),PharmacyActivity.class));
-
+                        startActivity(new Intent(getActivity(), PharmacyActivity.class));
                     }
                     if (documentSnapshot.getString("isUser") != null){
                     startActivity(new Intent(getActivity(),DoctorActivity.class));
-
                 }
-
             }
         });
 

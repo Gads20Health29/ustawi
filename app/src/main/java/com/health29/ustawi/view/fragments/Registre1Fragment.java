@@ -81,11 +81,11 @@ public class Registre1Fragment extends Fragment {
 
     //Initialisation of type count spinner
     public void initSpinner(){
-        typeCount.add("User");
-        typeCount.add("Pharmacy");
-        typeCount.add("Doctor");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-            android.R.layout.simple_spinner_item, typeCount);
+        typeCount.add("user");
+        typeCount.add("pharmacy");
+//        typeCount.add("Doctor"); There is a signup page for doctors so i don't think its necessary to add them here
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+            R.layout.spinner_item, typeCount);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
     }
@@ -97,11 +97,10 @@ public class Registre1Fragment extends Fragment {
 
         fauth=FirebaseAuth.getInstance();
         fstore=FirebaseFirestore.getInstance();
-        if (isValidate(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString(), mPassWordConfirmeEditText.getText().toString())){
 
+        if (isValidate(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString(), mPassWordConfirmeEditText.getText().toString())){
             if (mSpinner.getSelectedItemPosition() == 0){
                 launchActivity();
-                //call launch activity methode here and save data in firestore
                 Log.d("tag","fff");
 
             }else {
@@ -109,10 +108,11 @@ public class Registre1Fragment extends Fragment {
                         mPassWordEditText.getText().toString(),
                         mPassWordConfirmeEditText.getText().toString(),
                         mSpinner.getSelectedItemPosition());
-              mNavController.navigate(R.id.regirstre1Toregirstre2);
+                mNavController.navigate(R.id.regirstre1Toregirstre2);
             }
         }else{
-            util.showToastMessage("Resolve error");
+//            util.showToastMessage("Resolve error");
+            Toast.makeText(getActivity(),"Please fill in all fields ",Toast.LENGTH_LONG).show();
         }
 
     }
@@ -122,21 +122,21 @@ public class Registre1Fragment extends Fragment {
     public boolean isValidate(String email, String password, String passwordConfirm){
         boolean valid = true;
         if (email.trim().isEmpty()){
-            mLoginEditText.setError("It's empty");
+            mLoginEditText.setError("Email cannot be empty");
             valid = false;
         }else{
             mLoginEditText.setError(null);
         }
 
         if (password.trim().isEmpty()){
-            mPassWordEditText.setError("It's empty");
+            mPassWordEditText.setError("Password cannot be empty");
             valid = false;
         }else{
             mPassWordEditText.setError(null);
         }
 
         if (passwordConfirm.trim().isEmpty()){
-            mPassWordConfirmeEditText.setError("It's empty");
+            mPassWordConfirmeEditText.setError("Confirm your password");
             valid = false;
         }else{
             mPassWordConfirmeEditText.setError(null);
@@ -165,7 +165,6 @@ public class Registre1Fragment extends Fragment {
                 Map<String, Object> userInfo = new HashMap<>();
                 userInfo.put("EmailAddress",mLoginEditText.getText().toString());
                 userInfo.put("isUser", "1");
-
                 df.set(userInfo);
 
                 startActivity(new Intent(getActivity(), PharmacyActivity.class));
