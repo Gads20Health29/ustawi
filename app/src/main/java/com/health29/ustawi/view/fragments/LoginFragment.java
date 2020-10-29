@@ -133,9 +133,11 @@ public class LoginFragment extends Fragment {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                     if (documentSnapshot.getString("isPharmacy") != null){
                         startActivity(new Intent(getActivity(), PharmacyActivity.class));
+                        getActivity().finish();
                     }
                     if (documentSnapshot.getString("isUser") != null){
                     startActivity(new Intent(getActivity(),DoctorActivity.class));
+                    getActivity().finish();
                 }
             }
         });
