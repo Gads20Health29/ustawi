@@ -35,6 +35,7 @@ import com.health29.ustawi.models.PatientModel;
 import com.health29.ustawi.utils.Constant;
 import com.health29.ustawi.utils.Util;
 import com.health29.ustawi.view.activities.PharmacyActivity;
+import com.health29.ustawi.view.activities.UserActivity;
 import com.orhanobut.hawk.Hawk;
 
 import java.util.ArrayList;
@@ -167,7 +168,7 @@ public class Registre1Fragment extends Fragment {
                 patientModel.setUserRef(df);
 
                 df.set(patientModel);
-                startActivity(new Intent(getActivity(), PharmacyActivity.class));
+                startActivity(new Intent(getActivity(), UserActivity.class));
                 mRegister1Progressbar.setVisibility(View.GONE);
                 getActivity().finish();
             }

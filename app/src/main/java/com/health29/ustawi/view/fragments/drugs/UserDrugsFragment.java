@@ -23,7 +23,7 @@ import com.health29.ustawi.view.recview.DrugAdapter;
 import java.util.List;
 
 
-public class DrugsFragment extends Fragment {
+public class UserDrugsFragment extends Fragment {
 
     private DrugsViewModel mDrugsViewModel;
     private RecyclerView mRecycleView;
@@ -34,9 +34,9 @@ public class DrugsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         mDrugsViewModel =
                 ViewModelProviders.of(this).get(DrugsViewModel.class);
-        mRoot = inflater.inflate(R.layout.fragment_drugs, container, false);
+        mRoot = inflater.inflate(R.layout.fragment_user_drugs, container, false);
 
-       onBindView();
+        onBindView();
 
         mDrugsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<List<Drug>>() {
             @Override
@@ -45,11 +45,7 @@ public class DrugsFragment extends Fragment {
                 mAdapter.setDrugs(drugs);
             }
         });
-        FloatingActionButton fab = mRoot.findViewById(R.id.fab);
-        fab.setOnClickListener(pView -> {
-            Intent intent = new Intent(getActivity(), AddDrugActivity.class);
-            startActivity(intent);
-        });
+
 
 
 
@@ -58,10 +54,6 @@ public class DrugsFragment extends Fragment {
     }
 
     private void onBindView() {
-        FloatingActionButton fab = mRoot.findViewById(R.id.fab);
-        fab.setOnClickListener(view -> {
-            Toast.makeText(getContext(), "Action add drug", Toast.LENGTH_LONG).show();
-        });
 
         mRecycleView = mRoot.findViewById(R.id.recycleView);
         mAdapter = new DrugAdapter();
