@@ -13,4 +13,7 @@
     <color name="startblue">#09c6df</color>
     <color name="endblue">#0bcce6</color>
 
+    <color name="errorColor">#CE6262</color>
+    <color name="warningColor">#ee8572</color>
+
 </resources>
