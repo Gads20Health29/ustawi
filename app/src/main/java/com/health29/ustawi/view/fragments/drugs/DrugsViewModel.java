@@ -1,10 +1,13 @@
 package com.health29.ustawi.view.fragments.drugs;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.health29.ustawi.models.Drug;
+import com.health29.ustawi.models.PharmacyModel;
 
 import java.util.ArrayList;
 import java.util.List;

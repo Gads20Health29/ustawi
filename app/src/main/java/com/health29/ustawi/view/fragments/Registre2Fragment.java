@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -64,6 +65,9 @@ public class Registre2Fragment extends Fragment {
     @BindView(R.id.mBioEditText)
     EditText mBioEditText;
 
+    @BindView(R.id.mRegister2Progressbar)
+    ProgressBar mRegister2Progressbar;
+
     @BindView(R.id.mSpecialisationLinearLayout)
     LinearLayout mSpecialisationLinearLayout;
 
@@ -100,6 +104,7 @@ public class Registre2Fragment extends Fragment {
         mButtonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mRegister2Progressbar.setVisibility(View.VISIBLE);
                 if (mAccountTypeSpinner.getSelectedItemPosition() == 0){
                     pharmacyAccountAuth();
                 }else {
@@ -155,13 +160,6 @@ public class Registre2Fragment extends Fragment {
 
 
     private void doctorAccountAuth() {
-//        Log.d("balabala", mNameEditText.getText().toString());
-//        Log.d("balabala", mMobileEditText.getText().toString());
-//        Log.d("balabala", mAddressEditText.getText().toString());
-//        Log.d("balabala", mLocationEditText.getText().toString());
-//        Log.d("balabala", mPasswordEditText.getText().toString());
-//        Log.d("balabala", mBioEditText.getText().toString());
-
         if (isValidatePharmacy(mNameEditText.getText().toString(), mMobileEditText.getText().toString(),
                 mAddressEditText.getText().toString(), mLocationEditText.getText().toString(), mPasswordEditText.getText().toString())) {
 
@@ -182,10 +180,14 @@ public class Registre2Fragment extends Fragment {
 
                         df.set(doctorModel);
                         startActivity(new Intent(getActivity(), DoctorActivity.class));
+                        mRegister2Progressbar.setVisibility(View.GONE);
                         getActivity().finish();
 
                     }).addOnFailureListener(e -> {
-    //                        Snackbar.make(getView(), "This is main_menu.xml activity", Snackbar.LENGTH_LONG).show();
+                        mRegister2Progressbar.setVisibility(View.GONE);
+                    Snackbar snackbar = Snackbar.make(view.getRootView(), e.getMessage(),Snackbar.LENGTH_LONG);
+                    snackbar.getView().setBackgroundColor(getResources().getColor(R.color.errorColor));
+                    snackbar.show();
                         Log.d("balabala", e.toString());
                     });
         }
@@ -213,10 +215,11 @@ public class Registre2Fragment extends Fragment {
                             pharmacyModel.setPharmacyRef(df);
                             df.set(pharmacyModel);
                             startActivity(new Intent(getActivity(), PharmacyActivity.class));
+                            mRegister2Progressbar.setVisibility(View.GONE);
                             getActivity().finish();
 
                         }).addOnFailureListener(e -> {
-                            FirebaseAuth.getInstance().signOut();
+                    mRegister2Progressbar.setVisibility(View.GONE);
                             Snackbar snackbar = Snackbar.make(view.getRootView(), e.getMessage(),Snackbar.LENGTH_LONG);
                             snackbar.getView().setBackgroundColor(getResources().getColor(R.color.errorColor));
                             snackbar.show();
