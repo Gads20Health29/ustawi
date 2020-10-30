@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="LoginTypeItems">
+        <item>User</item>
+        <item>Pharmacy</item>
+        <item>Doctor</item>
+    </string-array>
+    <string-array name="AccountTypeItems">
+        <item>Pharmacy</item>
+        <item>Doctor</item>
+    </string-array>
+
+    <string-array name="SpecializationTypeItems">
+        <item>Gynecology</item>
+        <item>Surgery</item>
+        <item>Pediatrics</item>
+    </string-array>
+</resources>

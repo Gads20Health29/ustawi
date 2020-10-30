@@ -28,6 +28,7 @@ public class MainApp extends Application {
 
 
 
+
     private static File createFolder(String name) {
         String folder = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + name;
         File f = new File(folder);
@@ -42,4 +43,5 @@ public class MainApp extends Application {
         super.attachBaseContext(base);
         MultiDex.install(this);
     }
+
 }

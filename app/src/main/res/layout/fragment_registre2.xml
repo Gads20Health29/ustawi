@@ -1,195 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/cardview_light_background"
-    tools:context=".view.fragments.Registre2Fragment">
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:id="@+id/mRegister2Progressbar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:foregroundGravity="center"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        tools:context=".view.activities.IdentificationActivity">
+        android:background="@color/colorWhite"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:paddingBottom="50dp"
+        tools:context=".view.fragments.Registre2Fragment">
 
         <LinearLayout
-            android:id="@+id/mImageContent"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:orientation="vertical"
-            android:background="@drawable/bottom_circle"
-            android:layout_alignParentTop="true">
-
-         <TextView
-                 android:id="@+id/mImage"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:text="@string/app_name"
-                 android:layout_marginTop="70dp"
-                 android:textStyle="bold"
-                 android:textColor="@color/cardview_light_background"
-                 android:layout_marginLeft="150dp"
-                 android:textSize="23sp"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/mButtonsContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerInParent="true"
-            android:layout_margin="30dp">
-
-            <EditText
-                android:id="@+id/mNameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="@string/name"
-                android:paddingLeft="10dp"
-                android:inputType="text"
-                android:textSize="@dimen/edittext_text_size"
-                android:textColorHint="@color/fadedDark"
-                android:textColor="@color/primaryDark"
-                android:background="@drawable/shape_button"/>
-
-            <EditText
-                android:id="@+id/mMobileEditText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:hint="@string/mobile"
-                android:paddingLeft="10dp"
-                android:inputType="number"
-                android:textSize="@dimen/edittext_text_size"
-                android:textColorHint="@color/fadedDark"
-                android:textColor="@color/primaryDark"
-                android:background="@drawable/shape_button"/>
-
-
-            <EditText
-                android:id="@+id/mAddressEditText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:hint="@string/address"
-                android:paddingLeft="10dp"
-                android:inputType="text"
-                android:textSize="@dimen/edittext_text_size"
-                android:textColorHint="@color/fadedDark"
-                android:textColor="@color/primaryDark"
-                android:background="@drawable/shape_button"/>
-
-            <EditText
-                android:id="@+id/mPasswordEditText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:hint="Enter password"
-                android:paddingLeft="10dp"
-                android:textSize="@dimen/edittext_text_size"
-                android:textColorHint="@color/fadedDark"
-                android:textColor="@color/primaryDark"
-                android:inputType="text"
-                android:background="@drawable/shape_button"/>
-
-            <EditText
-                android:id="@+id/mLocationEditText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:hint="@string/location"
-                android:paddingLeft="10dp"
-                android:textSize="@dimen/edittext_text_size"
-                android:textColorHint="@color/fadedDark"
-                android:textColor="@color/primaryDark"
-                android:inputType="text"
-                android:background="@drawable/shape_button"/>
+            android:background="@color/white"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/mSpecialisationLinearLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/mSpecializationText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="@string/specialization"
-                    android:textStyle="bold"
-                    android:textColor="@color/fadedDark"/>
-
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/mSpecializationSpinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/fadedDark"
-                    android:layout_marginLeft="1dp"/>
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/mBioEditText"
+                android:id="@+id/mImageContent"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="10dp"
-                android:hint="@string/bio"
-                android:paddingLeft="10dp"
-                android:inputType="text"
-                android:textSize="@dimen/edittext_text_size"
-                android:textColorHint="@color/fadedDark"
-                android:textColor="@color/primaryDark"
-                android:background="@drawable/shape_button"/>
+                android:layout_height="166dp"
+                android:background="@drawable/bottom_circle"
+                android:orientation="vertical">
 
-            <LinearLayout android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
                 <TextView
-                    android:id="@+id/mAccountTypeText"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/mImage"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="@string/type_count"
-                    android:textStyle="bold"
-                    android:textColor="@color/fadedDark"/>
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="70dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
 
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/mAccountTypeSpinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/fadedDark"
-                    android:layout_marginLeft="1dp"/>
             </LinearLayout>
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="30dp"
-            android:orientation="horizontal"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/mButtonsContent">
+            <LinearLayout
+                android:id="@+id/mButtonsContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:layout_margin="30dp">
+
+                <EditText
+                    android:id="@+id/mNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/name"
+                    android:paddingLeft="10dp"
+                    android:inputType="text"
+                    android:textSize="@dimen/edittext_text_size"
+                    android:textColorHint="@color/fadedDark"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/shape_button"/>
+
+                <EditText
+                    android:id="@+id/mMobileEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/mobile"
+                    android:paddingLeft="10dp"
+                    android:inputType="number"
+                    android:textSize="@dimen/edittext_text_size"
+                    android:textColorHint="@color/fadedDark"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/shape_button"/>
 
 
-            <Button
-                android:id="@+id/mButtonRegistre"
+                <EditText
+                    android:id="@+id/mAddressEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/address"
+                    android:paddingLeft="10dp"
+                    android:inputType="text"
+                    android:textSize="@dimen/edittext_text_size"
+                    android:textColorHint="@color/fadedDark"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/shape_button"/>
+
+                <EditText
+                    android:id="@+id/mPasswordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="Enter password"
+                    android:paddingLeft="10dp"
+                    android:textSize="@dimen/edittext_text_size"
+                    android:textColorHint="@color/fadedDark"
+                    android:textColor="@color/primaryDark"
+                    android:inputType="textPassword"
+                    android:background="@drawable/shape_button"/>
+
+                <EditText
+                    android:id="@+id/mLocationEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/location"
+                    android:paddingLeft="10dp"
+                    android:textSize="@dimen/edittext_text_size"
+                    android:textColorHint="@color/fadedDark"
+                    android:textColor="@color/primaryDark"
+                    android:inputType="text"
+                    android:background="@drawable/shape_button"/>
+
+                <LinearLayout
+                    android:id="@+id/mSpecialisationLinearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/mSpecializationText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="@string/specialization"
+                        android:textStyle="bold"
+                        android:textColor="@color/fadedDark"/>
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/mSpecializationSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/fadedDark"
+                        android:layout_marginLeft="1dp"
+                        android:entries="@array/SpecializationTypeItems"/>
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/mBioEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/bio"
+                    android:paddingLeft="10dp"
+                    android:inputType="text"
+                    android:textSize="@dimen/edittext_text_size"
+                    android:textColorHint="@color/fadedDark"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/shape_button"/>
+
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/mAccountTypeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="@string/type_count"
+                        android:textStyle="bold"
+                        android:textColor="@color/fadedDark"/>
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/mAccountTypeSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/fadedDark"
+                        android:layout_marginLeft="1dp"
+                        android:entries="@array/AccountTypeItems"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_shadow"
-                android:textSize="15sp"
-                android:textColor="@color/cardview_light_background"
-                android:text="@string/finish"
-
-                />
-
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical"
+                android:layout_alignParentRight="true"
+                >
 
 
+                <Button
+                    android:id="@+id/mButtonRegistre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="270dp"
+                    android:layout_marginLeft="270dp"
+                    android:background="@drawable/button_shadow"
+
+                    android:text="@string/finish"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="15sp" />
+            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
-    </RelativeLayout>
 
-</FrameLayout>
+</RelativeLayout>
+

@@ -2,147 +2,97 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     android:paddingBottom="50dp"
     tools:context=".view.fragments.profile.ProfileFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".view.fragments.profile.ProfileFragment"
-        android:background="@color/graylight"
-        android:orientation="vertical">
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/mImageContent"
             android:layout_width="match_parent"
-            android:layout_height="405dp">
-            <LinearLayout
-                android:background="@drawable/gradientbackground"
+            android:layout_height="match_parent"
+            android:background="@drawable/bottom_circle"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:orientation="vertical">
+                android:layout_height="317dp">
+
+                <TextView
+                    android:layout_width="185dp"
+                    android:layout_height="53dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/pharmacy_Name"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pharmacyImage"
+                    app:layout_constraintVertical_bias="0.247" />
 
                 <ImageView
+                    android:id="@+id/pharmacyImage"
                     android:layout_width="150dp"
                     android:layout_height="160dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="45dp"
-                    android:src="@drawable/photocercle" />
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Wiliam Snoe"
-                    android:textColor="#fff"
-                    android:textStyle="bold"
-                    android:textSize="21sp"/>
-            </LinearLayout>
-            <androidx.cardview.widget.CardView
-                android:layout_width="400dp"
-                android:layout_height="120dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="275dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="3">
-                    <LinearLayout
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent">
+                    android:contentDescription="@string/doctors_image"
+                    android:src="@drawable/photocercle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.315" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Points"
-                            android:textSize="20sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="125"
-                            android:textStyle="bold"
-                            android:textSize="20sp"
-                            android:paddingTop="10dp"
-                            android:textColor="@color/startblue"/>
 
-                    </LinearLayout>
-                    <LinearLayout
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent">
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="likes"
-                            android:textSize="20sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1205"
-                            android:textStyle="bold"
-                            android:textSize="20sp"
-                            android:paddingTop="10dp"
-                            android:textColor="@color/startblue"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Following"
-                            android:textSize="20sp"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="360"
-                            android:textStyle="bold"
-                            android:textSize="20sp"
-                            android:paddingTop="10dp"
-                            android:textColor="@color/startblue"/>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-        </RelativeLayout>
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
+            android:layout_width="387dp"
+            android:layout_height="327dp"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="25dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:paddingStart="25dp"
                 android:paddingLeft="25dp">
 
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/ic_email_black_24" />
+                    android:contentDescription="@string/pharmacy_Email"
+                    android:src="@drawable/ic_email_black_24"
+                    app:tint="#101010" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:paddingStart="20dp"
                     android:paddingLeft="20dp"
-                    android:text="Wiliam@gmail.com"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/pharmacy_Email"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -156,15 +106,20 @@
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/ic_local_phone_black_24" />
+                    android:contentDescription="@string/Pharmacy_Phone"
+                    android:src="@drawable/ic_local_phone_black_24"
+                    app:tint="#100F0F" />
 
                 <TextView
                     android:layout_width="wrap_content"
-
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:paddingStart="20dp"
                     android:paddingLeft="20dp"
-                    android:text="+266 225 225"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Pharmacy_Phone"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -178,15 +133,20 @@
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/ic_group_work_black_24" />
+                    android:contentDescription="@string/Pharmacy_Biography"
+                    android:src="@drawable/perm_identity"
+                    app:tint="#090909" />
 
                 <TextView
                     android:layout_width="wrap_content"
-
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:paddingStart="20dp"
                     android:paddingLeft="20dp"
-                    android:text="Add to group"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Pharmacy_Biography"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -200,28 +160,22 @@
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/ic_forum_black_24" />
+                    android:background="#FAF0F0"
+                    android:contentDescription="@string/Pharmacy_Location"
+                    android:src="@drawable/ic_pharmacy" />
 
                 <TextView
                     android:layout_width="wrap_content"
-
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:paddingStart="20dp"
                     android:paddingLeft="20dp"
-                    android:text="Show all comments"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Pharmacy_Location"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/buttomstyle"
-            android:text="Update profile"
-            android:textColor="#fff" />
     </LinearLayout>
 </ScrollView>
-
-

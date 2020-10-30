@@ -66,7 +66,15 @@
                 android:inputType="textPassword"
                 android:background="@drawable/shape_button"/>
 
-        <LinearLayout
+            <ProgressBar
+                android:id="@+id/mLoginProgressbar"
+                style="?android:attr/progressBarStyle"
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
             android:layout_width="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
@@ -84,7 +92,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/fadedDark"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:entries="@array/LoginTypeItems"/>
 
         </LinearLayout>
 
@@ -103,11 +112,11 @@
                 android:id="@+id/mNoCount1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create Account as A Doctor"
-                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginStart="5dp" />
+                android:text="Create Account as A Doctor or Pharmacy"
+                android:textColor="@color/colorPrimary" />
 
         </LinearLayout>
 
