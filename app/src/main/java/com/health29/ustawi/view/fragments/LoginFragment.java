@@ -78,7 +78,7 @@ public class LoginFragment extends Fragment {
            launchActivity();
         });
         ButterKnife.bind(this, view);
-        initSpinner();
+//        initSpinner();
         mNavController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         return view;
 
@@ -96,15 +96,15 @@ public class LoginFragment extends Fragment {
 
     }
 
-    public void initSpinner(){
-        userType.add("user");
-        userType.add("pharmacy");
-        userType.add("doctor");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                R.layout.spinner_item, userType);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mLoginUserTypeSpinner.setAdapter(adapter);
-    }
+//    public void initSpinner(){
+//        userType.add("user");
+//        userType.add("pharmacy");
+//       userType.add("doctor");
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+//                R.layout.spinner_item, userType);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        mLoginUserTypeSpinner.setAdapter(adapter);
+//    }
 
 
     //Verification of input form

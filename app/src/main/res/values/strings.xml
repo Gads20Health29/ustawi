@@ -48,5 +48,15 @@
     <string name="doctor_phone">Doctor Phone</string>
     <string name="doctor_specialization">Doctor Specialization</string>
     <string name="currently_working_at">Currently Working At</string>
+    <string name="logout">Logout</string>
+    <string name="pharmacy_Name">Pharmacy Name</string>
+    <string name="pharmacy_Email">Pharmacy Email</string>
+    <string name="Pharmacy_Phone">Pharmacy Phone</string>
+    <string name="Pharmacy_Biography">Pharmacy Biography</string>
+    <string name="Pharmacy_Location">Pharmacy Location</string>
+    <string name="add_drug">Add Drug</string>
+    <string name="drug_name">Drug Name</string>
+    <string name="drug_price">Drug Price</string>
+    <string name="drug_category">Drug Category</string>
 
 </resources>
