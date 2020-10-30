@@ -5,7 +5,7 @@
     <string name="email">Enter email</string>
     <string name="name">Your name</string>
     <string name="mobile">Your mobile</string>
-    <string name="address">Your address</string>
+    <string name="address">Your email address</string>
     <string name="location">Your location</string>
     <string name="specialization">Your specialization</string>
     <string name="bio">Your biography</string>

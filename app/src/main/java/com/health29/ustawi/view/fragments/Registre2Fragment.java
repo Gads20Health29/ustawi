@@ -9,51 +9,53 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.health29.ustawi.R;
+import com.health29.ustawi.models.DoctorModel;
+import com.health29.ustawi.models.PharmacyModel;
 import com.health29.ustawi.utils.Constant;
-import com.health29.ustawi.utils.Util;
+import com.health29.ustawi.view.activities.DoctorActivity;
 import com.health29.ustawi.view.activities.PharmacyActivity;
-import com.orhanobut.hawk.Hawk;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class Registre2Fragment extends Fragment {
 
 
-    @BindView(R.id.mSpinner)
-    AppCompatSpinner mSpinner;
+    @BindView(R.id.mAccountTypeSpinner)
+    AppCompatSpinner mAccountTypeSpinner;
 
-    AppCompatSpinner mSpinner1;
+    @BindView(R.id.mSpecializationSpinner)
+    AppCompatSpinner mSpecializationSpinner;
+
 
     @BindView(R.id.mNameEditText)
     EditText mNameEditText;
 
 
-    @BindView(R.id.mAdressEditText)
-    EditText mAdressEditText;
+    @BindView(R.id.mAddressEditText)
+    EditText mAddressEditText;
 
     @BindView(R.id.mLocationEditText)
     EditText mLocationEditText;
@@ -62,22 +64,23 @@ public class Registre2Fragment extends Fragment {
     @BindView(R.id.mBioEditText)
     EditText mBioEditText;
 
-    EditText mpassword;
+    @BindView(R.id.mSpecialisationLinearLayout)
+    LinearLayout mSpecialisationLinearLayout;
 
-    @BindView(R.id.mButtonRegistre)
-    EditText mbuttonRegister;
+    @BindView(R.id.mMobileEditText)
+    EditText mMobileEditText;
 
+    @BindView(R.id.mPasswordEditText)
+    EditText mPasswordEditText;
 
     FirebaseFirestore fstore;
     FirebaseAuth fAuth;
-    EditText mMobileEditText;
+
     List<String> specialization = new ArrayList<>();
 
     List<String> typeCount = new ArrayList<>();
     View view;
     NavController mNavController;
-//
-//    private int typeCount = 0;
 
     Constant constant = new Constant();
     private String password;
@@ -85,170 +88,173 @@ public class Registre2Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_registre2, container, false);
-       // ButterKnife.bind(this, view);
-        initSpinner1();
-        //initSpinner();
+        ButterKnife.bind(this, view);
+        initSpecialisationSpinner();
+        initUserTypeSpinner();
         fstore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
 
-        Button mbuttonRegister = (Button) view.findViewById(R.id.mButtonRegistre);
-        mbuttonRegister.setOnClickListener(new View.OnClickListener() {
+        Button mButtonRegister = (Button) view.findViewById(R.id.mButtonRegistre);
+        mButtonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PharmacyAccountAuth();
+                if (mAccountTypeSpinner.getSelectedItemPosition() == 0){
+                    pharmacyAccountAuth();
+                }else {
+                    doctorAccountAuth();
+                }
+
             }
         });
 
-//        ButterKnife.bind(this, view);
+
+        mAccountTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("SELECTED ACCOUNT TYPE", String.valueOf(position));
+                if (position == 0){
+                    mSpecialisationLinearLayout.setVisibility(View.GONE);
+//                    mBioEditText.setVisibility(View.GONE);
+                }else{
+                    mSpecialisationLinearLayout.setVisibility(View.VISIBLE);
+//                    mBioEditText.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.d("SELECTED ACCOUNT TYPE", "Nothing selected");
+            }
+        });
+
         return view;
     }
-    public void initSpinner1(){
-        mSpinner = view.findViewById(R.id.mSpinner);
-        typeCount.add("User");
+
+
+    public void initUserTypeSpinner(){
         typeCount.add("Pharmacy");
         typeCount.add("Doctor");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, typeCount);
+                R.layout.spinner_item, typeCount);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinner.setAdapter(adapter);
+        mAccountTypeSpinner.setAdapter(adapter);
     }
 
     //Initialisation on specialization spinner
-    public void initSpinner() {
+    public void initSpecialisationSpinner() {
         specialization.add("Gynecology");
         specialization.add("Surgery");
         specialization.add("Pediatrics");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, specialization);
+                R.layout.spinner_item, specialization);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinner.setAdapter(adapter);
+        mSpecializationSpinner.setAdapter(adapter);
     }
 
-    public void PharmacyAccountAuth() {
 
-        mMobileEditText = view.findViewById(R.id.mMobileEditText);
-        mAdressEditText = view.findViewById(R.id.mAdressEditText);
-        mNameEditText = view.findViewById(R.id.mNameEditText);
-        mLocationEditText = view.findViewById(R.id.mLocationEditText);
-        mpassword=view.findViewById(R.id.mpasswordEditText);
+    private void doctorAccountAuth() {
+//        Log.d("balabala", mNameEditText.getText().toString());
+//        Log.d("balabala", mMobileEditText.getText().toString());
+//        Log.d("balabala", mAddressEditText.getText().toString());
+//        Log.d("balabala", mLocationEditText.getText().toString());
+//        Log.d("balabala", mPasswordEditText.getText().toString());
+//        Log.d("balabala", mBioEditText.getText().toString());
 
-       // if (mSpinner.getSelectedItemPosition() == 1){
-            if (isValidatePharmacy(mNameEditText.getText().toString(), mMobileEditText.getText().toString(),
-                    mAdressEditText.getText().toString(), mLocationEditText.getText().toString(), mpassword.getText().toString())) {
+        if (isValidatePharmacy(mNameEditText.getText().toString(), mMobileEditText.getText().toString(),
+                mAddressEditText.getText().toString(), mLocationEditText.getText().toString(), mPasswordEditText.getText().toString())) {
 
+            fAuth.createUserWithEmailAndPassword(mAddressEditText.getText().toString().trim(),mPasswordEditText.getText().toString().trim())
+                    .addOnSuccessListener(authResult -> {
+                        Toast.makeText(getActivity(), "Account Created", Toast.LENGTH_LONG).show();
+                        FirebaseUser user = fAuth.getCurrentUser();
+                        DocumentReference df = fstore.collection("Doctors").document(user.getUid());
 
-                fAuth.createUserWithEmailAndPassword(mAdressEditText.getText().toString(),mpassword.getText().toString())
-                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                            @Override
-                            public void onSuccess(AuthResult authResult) {
-                                Toast.makeText(getActivity(), "Account Created", Toast.LENGTH_LONG).show();
-                                FirebaseUser user = fAuth.getCurrentUser();
-                                DocumentReference df = fstore.collection("Users").document(user.getUid());
-                                Map<String, Object> userInfo = new HashMap<>();
-                                userInfo.put("FullName", mNameEditText.getText().toString());
-                                userInfo.put("PhoneNo", mMobileEditText.getText().toString());
-                                userInfo.put("EmailAddress", mAdressEditText.getText().toString());
-                                userInfo.put("location", mLocationEditText.getText().toString());
-                                userInfo.put("isPharmacy", "1");
+                        DoctorModel doctorModel = new DoctorModel();
+                        doctorModel.setName(mNameEditText.getText().toString().trim());
+                        doctorModel.setMobile(mMobileEditText.getText().toString().trim());
+                        doctorModel.setEmail(mAddressEditText.getText().toString().trim());
+                        doctorModel.setLocation(mLocationEditText.getText().toString().trim());
+                        doctorModel.setSpecialisation(specialization.get(mSpecializationSpinner.getSelectedItemPosition()));
+                        doctorModel.setBiography(mBioEditText.getText().toString() != null ? mBioEditText.getText().toString() : "");
+                        doctorModel.setDoctorRef(df);
 
-                                df.set(userInfo);
+                        df.set(doctorModel);
+                        startActivity(new Intent(getActivity(), DoctorActivity.class));
+                        getActivity().finish();
 
-                                startActivity(new Intent(getActivity(), PharmacyActivity.class));
-
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
+                    }).addOnFailureListener(e -> {
+    //                        Snackbar.make(getView(), "This is main activity", Snackbar.LENGTH_LONG).show();
                         Log.d("balabala", e.toString());
-                    }
-                });
-                //launch pharmacy activity home and save data in firestore
+                    });
+        }
 
-//            }else {
-//                util.showToastMessage("Resolve error");
+    }
 
 
-//            if (isValidateDoctor(mNameEditText.getText().toString(), mMobileEditText.getText().toString(),
-//                    mAdressEditText.getText().toString(), mLocationEditText.getText().toString(),
-//                    mBioEditText.getText().toString())){
+    public void pharmacyAccountAuth() {
 
-                //launch doctor activity home and save data in firestore
+            if (isValidatePharmacy(mNameEditText.getText().toString(), mMobileEditText.getText().toString(),
+                mAddressEditText.getText().toString(), mLocationEditText.getText().toString(), mPasswordEditText.getText().toString())) {
+                fAuth.createUserWithEmailAndPassword(mAddressEditText.getText().toString().trim(),mPasswordEditText.getText().toString().trim())
+                        .addOnSuccessListener(authResult -> {
+                            Toast.makeText(getActivity(), "Account Created", Toast.LENGTH_LONG).show();
+                            FirebaseUser user = fAuth.getCurrentUser();
+                            DocumentReference df = fstore.collection("Pharmacy").document(user.getUid());
 
+                            PharmacyModel pharmacyModel = new PharmacyModel();
+                            pharmacyModel.setName(mNameEditText.getText().toString().trim());
+                            pharmacyModel.setMobile(mMobileEditText.getText().toString().trim());
+                            pharmacyModel.setEmail(mAddressEditText.getText().toString().trim());
+                            pharmacyModel.setLocation(mLocationEditText.getText().toString().trim());
+                            pharmacyModel.setBiography(mBioEditText.getText().toString() != null ? mBioEditText.getText().toString() : "");
+
+                            pharmacyModel.setPharmacyRef(df);
+                            df.set(pharmacyModel);
+                            startActivity(new Intent(getActivity(), PharmacyActivity.class));
+                            getActivity().finish();
+
+                        }).addOnFailureListener(e -> {
+                            FirebaseAuth.getInstance().signOut();
+                            Snackbar snackbar = Snackbar.make(view.getRootView(), e.getMessage(),Snackbar.LENGTH_LONG);
+                            snackbar.getView().setBackgroundColor(getResources().getColor(R.color.errorColor));
+                            snackbar.show();
+                            Log.d("balabala", e.toString());
+                            return;
+                        });
 
             }
 }
 
-    //Verification of input doctor form
-//    public boolean isValidateDoctor(String name, String mobile, String adress, String location, String bio){
-//        boolean valid = true;
-//        if (name.trim().isEmpty()){
-//            mNameEditText.setError("It's empty");
-//            valid = false;
-//        }else{
-//            mMobileEditText.setError(null);
-//        }
-//
-//        if (mobile.trim().isEmpty()){
-//            mMobileEditText.setError("It's empty");
-//            valid = false;
-//        }else{
-//            mMobileEditText.setError(null);
-//        }
-//
-//        if (adress.trim().isEmpty()){
-//            mAdressEditText.setError("It's empty");
-//            valid = false;
-//        }else{
-//            mAdressEditText.setError(null);
-//        }
-//
-//        if (location.trim().isEmpty()){
-//            mLocationEditText.setError("It's empty");
-//            valid = false;
-//        }else{
-//            mLocationEditText.setError(null);
-//        }
-//
-//        if (bio.trim().isEmpty()){
-//            mBioEditText.setError("It's empty");
-//            valid = false;
-//        }else{
-//            mBioEditText.setError(null);
-//        }
-//
-//        return valid;
-//    }
 
     //Verification of input pharmacy form
     public boolean isValidatePharmacy(String name, String mobile, String adress, String
             location, String password) {
         boolean valid = true;
         if (name.trim().isEmpty()) {
-            mNameEditText.setError("It's empty");
+            mNameEditText.setError("This field cannot be empty");
             valid = false;
         } else {
             mMobileEditText.setError(null);
         }
 
         if (mobile.trim().isEmpty()) {
-            mMobileEditText.setError("It's empty");
+            mMobileEditText.setError("This field cannot be empty");
             valid = false;
         } else {
             mMobileEditText.setError(null);
         }
 
         if (adress.trim().isEmpty()) {
-            mAdressEditText.setError("It's empty");
+            mAddressEditText.setError("This field cannot be empty");
             valid = false;
         } else {
-            mAdressEditText.setError(null);
+            mAddressEditText.setError(null);
         }
 
         if (location.trim().isEmpty()) {
-            mLocationEditText.setError("It's empty");
+            mLocationEditText.setError("This field cannot be empty");
             valid = false;
         } else {
             mLocationEditText.setError(null);
@@ -257,31 +263,4 @@ public class Registre2Fragment extends Fragment {
         return valid;
     }
 
-
-//    Verification of
-//    type count
-//    to hidden
-//    some field
-
-//    public void getTypeCount() {
-//        typeCount = Hawk.get(constant.account_type);
-//
-//        switch (typeCount) {
-//            case 1:
-//                hiddenInput();
-//                break;
-//            default:
-//                Toast.makeText(getActivity(),"Welcome doctor",Toast.LENGTH_SHORT).show();
-//                break;
-//
-//        }
-//    }
-//
-//    //Hidding field
-//
-//    public void hiddenInput() {
-//        mSpecializationText.setVisibility(View.GONE);
-//        mSpinner.setVisibility(View.GONE);
-//        mBioEditText.setVisibility(View.GONE);
-//    }
 }

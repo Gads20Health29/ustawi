@@ -27,6 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.health29.ustawi.R;
+import com.health29.ustawi.models.PatientModel;
 import com.health29.ustawi.utils.Constant;
 import com.health29.ustawi.utils.Util;
 import com.health29.ustawi.view.activities.PharmacyActivity;
@@ -40,8 +41,8 @@ import java.util.Map;
 public class Registre1Fragment extends Fragment {
 
 
-    @BindView(R.id.mSpinner)
-    AppCompatSpinner mSpinner;
+//    @BindView(R.id.mSpinner)
+//    AppCompatSpinner mSpinner;
 
     @BindView(R.id.mLoginEditText)
     EditText mLoginEditText;
@@ -65,30 +66,28 @@ public class Registre1Fragment extends Fragment {
     Util util = new Util();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_registre1, container, false);
         ButterKnife.bind(this, view);
 
-        initSpinner();
+//        initSpinner();
 
         mNavController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         return view;
     }
 
     //Initialisation of type count spinner
-    public void initSpinner(){
-        typeCount.add("user");
-        typeCount.add("pharmacy");
-//        typeCount.add("Doctor"); There is a signup page for doctors so i don't think its necessary to add them here
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-            R.layout.spinner_item, typeCount);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinner.setAdapter(adapter);
-    }
+//    public void initSpinner(){
+//        typeCount.add("user");
+////        typeCount.add("pharmacy");
+//        typeCount.add("doctor");
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+//            R.layout.spinner_item, typeCount);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        mSpinner.setAdapter(adapter);
+//    }
 
 
     //Launch activity or fragment
@@ -99,17 +98,18 @@ public class Registre1Fragment extends Fragment {
         fstore=FirebaseFirestore.getInstance();
 
         if (isValidate(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString(), mPassWordConfirmeEditText.getText().toString())){
-            if (mSpinner.getSelectedItemPosition() == 0){
+//            if (mSpinner.getSelectedItemPosition() == 0){
                 launchActivity();
                 Log.d("tag","fff");
 
-            }else {
-                insertSharePreference(mLoginEditText.getText().toString(),
-                        mPassWordEditText.getText().toString(),
-                        mPassWordConfirmeEditText.getText().toString(),
-                        mSpinner.getSelectedItemPosition());
-                mNavController.navigate(R.id.regirstre1Toregirstre2);
-            }
+//            }else {
+//                insertSharePreference(mLoginEditText.getText().toString(),
+//                mPassWordEditText.getText().toString(),
+//                mPassWordConfirmeEditText.getText().toString(),
+//                mSpinner.getSelectedItemPosition());
+//                mNavController.navigate(R.id.regirstre1Toregirstre2);
+//            }
+
         }else{
 //            util.showToastMessage("Resolve error");
             Toast.makeText(getActivity(),"Please fill in all fields ",Toast.LENGTH_LONG).show();
@@ -154,20 +154,29 @@ public class Registre1Fragment extends Fragment {
         Hawk.put(constant.account_type, countType);
     }
 
-    //Launch activity methode
+    //Launch activity method
     public void launchActivity(){
         fauth.createUserWithEmailAndPassword(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
+
                 Toast.makeText(getActivity(), "Account Created", Toast.LENGTH_LONG).show();
                 FirebaseUser user = fauth.getCurrentUser();
-                DocumentReference df = fstore.collection("Users").document(user.getUid());
-                Map<String, Object> userInfo = new HashMap<>();
-                userInfo.put("EmailAddress",mLoginEditText.getText().toString());
-                userInfo.put("isUser", "1");
-                df.set(userInfo);
+                DocumentReference df = fstore.collection("Patients").document(user.getUid());
+
+                PatientModel patientModel = new PatientModel();
+                patientModel.setEmail(mLoginEditText.getText().toString());
+                patientModel.setUserRef(df);
+
+                df.set(patientModel);
+
+
+//                Map<String, Object> userInfo = new HashMap<>();
+//                userInfo.put("EmailAddress",mLoginEditText.getText().toString());
+//                userInfo.put("isUser", "1");
 
                 startActivity(new Intent(getActivity(), PharmacyActivity.class));
+                getActivity().finish();
             }
         });
     }

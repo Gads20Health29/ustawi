@@ -1,9 +1,10 @@
 package com.health29.ustawi.view.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -11,16 +12,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -32,6 +35,9 @@ import com.health29.ustawi.utils.Util;
 import com.health29.ustawi.view.activities.DoctorActivity;
 import com.health29.ustawi.view.activities.PharmacyActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LoginFragment extends Fragment {
 
 
@@ -40,6 +46,12 @@ public class LoginFragment extends Fragment {
 
     @BindView(R.id.mPassWordEditText)
     EditText mPassWordEditText;
+
+
+    @BindView(R.id.mLoginUserTypeSpinner)
+    AppCompatSpinner mLoginUserTypeSpinner;
+
+    List<String> userType = new ArrayList<>();
 
      NavController mNavController;
      View view;
@@ -65,8 +77,8 @@ public class LoginFragment extends Fragment {
         mButton.setOnClickListener(view -> {
            launchActivity();
         });
-        //Butterkniff
         ButterKnife.bind(this, view);
+        initSpinner();
         mNavController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         return view;
 
@@ -75,7 +87,6 @@ public class LoginFragment extends Fragment {
 
     @OnClick(R.id.mNoCount)
     public void launchRegistreFragment(){
-            //Launch activity or fragment
             mNavController.navigate(R.id.loginToRegistre1);
     }
     @OnClick(R.id.mNoCount1)
@@ -85,7 +96,15 @@ public class LoginFragment extends Fragment {
 
     }
 
-
+    public void initSpinner(){
+        userType.add("user");
+        userType.add("pharmacy");
+        userType.add("doctor");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                R.layout.spinner_item, userType);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mLoginUserTypeSpinner.setAdapter(adapter);
+    }
 
 
     //Verification of input form
@@ -107,7 +126,7 @@ public class LoginFragment extends Fragment {
         return valid;
     }
 
-    //Launch activity methode
+    //Launch activity method
     public void launchActivity(){
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
@@ -115,34 +134,60 @@ public class LoginFragment extends Fragment {
         mPassWordEditText=view.findViewById(R.id.mPassWordEditText);
 
         if (isValidate(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString())){
-
             firebaseAuth.signInWithEmailAndPassword(mLoginEditText.getText().toString(),mPassWordEditText.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
-                    Toast.makeText(getActivity(),"Logged In Successfully ",Toast.LENGTH_LONG).show();
-                    checkUserAccessLevel(authResult.getUser().getUid());
+                    switch (mLoginUserTypeSpinner.getSelectedItemPosition()){
+                        case 1:
+                            // pharmacy
+                            checkUserAccessLevel(firebaseFirestore.collection("Pharmacy").document(authResult.getUser().getUid()), new Intent(getActivity(),PharmacyActivity.class), "Pharmacy");
+                            break;
+                        case 2:
+                            // doctor
+                            checkUserAccessLevel(firebaseFirestore.collection("Doctors").document(authResult.getUser().getUid()), new Intent(getActivity(),DoctorActivity.class), "Doctor");
+                            break;
+
+                        default:
+                            //Redirect to patient/user screen
+//                            checkUserAccessLevel(firebaseFirestore.collection("Patients").document(authResult.getUser().getUid()), new Intent(getActivity(),Patients.class), "Patient");
+                    }
+
                 }
+            }).addOnFailureListener(e -> {
+                FirebaseAuth.getInstance().signOut();
+                Snackbar snackbar = Snackbar.make(view.getRootView(), e.getMessage(),Snackbar.LENGTH_LONG);
+                snackbar.getView().setBackgroundColor(getResources().getColor(R.color.errorColor));
+                snackbar.show();
             });
         }
     }
 
-    private void checkUserAccessLevel(String uid) {
-        DocumentReference df = firebaseFirestore.collection("Users").document(uid);
-        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    if (documentSnapshot.getString("isPharmacy") != null){
-                        startActivity(new Intent(getActivity(), PharmacyActivity.class));
-                        getActivity().finish();
-                    }
-                    if (documentSnapshot.getString("isUser") != null){
-                    startActivity(new Intent(getActivity(),DoctorActivity.class));
-                    getActivity().finish();
-                }
+    private void checkUserAccessLevel(DocumentReference currentUserRef, Intent intent, String accountType) {
+
+        currentUserRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()){
+                Toast.makeText(getActivity(),"You are welcome back",Toast.LENGTH_LONG).show();
+                startActivity(intent);
+                getActivity().finish();
+            }else {
+               FirebaseAuth.getInstance().signOut();
+               Snackbar snackbar = Snackbar.make(view.getRootView(), "User does not exist as a "+ accountType,Snackbar.LENGTH_LONG);
+               snackbar.getView().setBackgroundColor(getResources().getColor(R.color.warningColor));
+               snackbar.show();
+               return;
             }
+
+        }).addOnFailureListener(e -> {
+            FirebaseAuth.getInstance().signOut();
+            Snackbar snackbar = Snackbar.make(view.getRootView(), e.getMessage(),Snackbar.LENGTH_LONG);
+            snackbar.getView().setBackgroundColor(getResources().getColor(R.color.errorColor));
+            snackbar.show();
+            return;
         });
 
     }
+
+
 
     @Override
     public void onStart() {
