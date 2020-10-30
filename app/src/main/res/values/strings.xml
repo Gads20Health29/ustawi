@@ -58,5 +58,9 @@
     <string name="drug_name">Drug Name</string>
     <string name="drug_price">Drug Price</string>
     <string name="drug_category">Drug Category</string>
+    <string name="users_name">User Name</string>
+    <string name="users_email">User Email</string>
+    <string name="users_phone">User Phone</string>
+    <string name="users_location">User Location</string>
 
 </resources>

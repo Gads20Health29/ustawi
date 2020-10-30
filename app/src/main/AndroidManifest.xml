@@ -31,10 +31,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddDrugActivity"></activity>
+        <activity android:name=".view.activities.AddDrugActivity"></activity>
         <activity android:name=".view.activities.AddConsultationActivity" />
         <activity android:name=".view.activities.ReplayActivity" />
         <activity android:name=".view.activities.DoctorActivity" />
+        <activity android:name=".view.activities.UserActivity" />
+
         <activity
             android:name=".view.activities.PharmacyActivity"
             android:label="@string/title_activity_pharmacy" />

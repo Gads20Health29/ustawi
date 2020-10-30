@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_navigation"
+    app:startDestination="@+id/navigation_drugs">
+
+
+
+    <fragment
+        android:id="@+id/navigation_drugs"
+        android:name="com.health29.ustawi.view.fragments.drugs.UserDrugsFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_user_drugs" />
+
+    <fragment
+        android:id="@+id/navigation_consultations"
+        android:name="com.health29.ustawi.view.fragments.UserConsultation"
+        android:label="@string/menu_title_consultations"
+        tools:layout="@layout/fragment_user_consultation" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.health29.ustawi.view.fragments.UserProfile"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_user_profile" />
+
+</navigation>
