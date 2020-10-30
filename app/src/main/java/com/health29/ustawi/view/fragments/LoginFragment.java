@@ -1,14 +1,10 @@
 package com.health29.ustawi.view.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,10 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +27,7 @@ import com.health29.ustawi.R;
 import com.health29.ustawi.utils.Util;
 import com.health29.ustawi.view.activities.DoctorActivity;
 import com.health29.ustawi.view.activities.PharmacyActivity;
+import com.health29.ustawi.view.activities.UserActivity;
 
 public class LoginFragment extends Fragment {
 
@@ -127,22 +122,24 @@ public class LoginFragment extends Fragment {
                 checkUserAccessLevel(authResult.getUser().getUid());
             }
         });
-        
+
 
     }
 
     private void checkUserAccessLevel(String uid) {
+
         DocumentReference df = firebaseFirestore.collection("Users").document(uid);
         df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                     if (documentSnapshot.getString("isPharmacy") != null){
                         startActivity(new Intent(getActivity(),PharmacyActivity.class));
-
+                        getActivity().finish();
                     }
                     if (documentSnapshot.getString("isUser") != null){
-                    startActivity(new Intent(getActivity(),DoctorActivity.class));
-
+                    startActivity(new Intent(getActivity(), UserActivity.class));
+                    startActivity(new Intent(getActivity(), UserActivity.class));
+                    getActivity().finish();
                 }
 
             }

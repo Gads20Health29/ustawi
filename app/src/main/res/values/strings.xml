@@ -29,5 +29,8 @@
     <string name="add_new_drug">Add new Drug</string>
     <string name="menu_title_consultations">Consultations</string>
     <string name="patient_icon_content_desc">Patient Icon</string>
+    <string name="available">Available</string>
+    <string name="add_consultation_title">Add Consultation title</string>
+    <string name="add">Add</string>
 
 </resources>

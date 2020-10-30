@@ -157,7 +157,7 @@ public class Registre2Fragment extends Fragment {
                                 df.set(userInfo);
 
                                 startActivity(new Intent(getActivity(), PharmacyActivity.class));
-
+                                getActivity().finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override

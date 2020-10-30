@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activities.AddNewDrug">
+
+        <LinearLayout
+            android:id="@+id/mImageContent"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:orientation="vertical"
+            android:background="@drawable/bottom_circle"
+            android:layout_alignParentTop="true">
+
+            <TextView
+                android:id="@+id/mImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Detail Here"
+                android:layout_marginTop="70dp"
+                android:textStyle="bold"
+                android:textColor="@color/cardview_light_background"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textSize="23sp"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/mButtonsContent"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:layout_margin="30dp"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            >
+
+            <EditText
+                android:id="@+id/drugName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/shape_button"
+                android:hint="name"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp" />
+
+            <EditText
+                android:id="@+id/drugPrice"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_button"
+                android:hint="catagory"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp" />
+            <EditText
+                android:id="@+id/drugCategory"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_button"
+                android:hint="catagory"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp" />
+
+            <LinearLayout
+                android:layout_width="192dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/available"
+                    android:textSize="20sp" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/drugAvailable"
+                    android:layout_width="103dp"
+                    android:layout_height="41dp"
+                    />
+
+            </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="30dp"
+        android:orientation="horizontal"
+        android:layout_gravity="end">
+            <Button
+                android:id="@+id/AddDrugButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_shadow"
+                android:textSize="15sp"
+                android:textColor="@color/cardview_light_background"
+                android:text="add"
+
+                />
+    </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>

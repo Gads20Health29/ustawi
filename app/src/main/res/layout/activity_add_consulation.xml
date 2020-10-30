@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_light_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/mImageContent"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/bottom_circle"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="122dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="70dp"
+                android:text="Add Consultation"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="23sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/mButtonsContent"
+            android:layout_width="359dp"
+            android:layout_height="245dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/add_consultation_title"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:background="@drawable/shape_button"
+                android:hint="@string/add_consultation_title"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/primaryDark"
+                android:textColorHint="@color/fadedDark"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/add_consultation_detail"
+                android:layout_width="match_parent"
+                android:layout_height="123dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_button"
+                android:hint="Add Consultation details"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/primaryDark"
+                android:textColorHint="@color/fadedDark"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_margin="30dp"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/mButtonsContent"
+            android:layout_alignParentEnd="true">
+
+
+            <Button
+                android:id="@+id/mAddButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:background="@drawable/button_shadow"
+                android:textColor="@color/cardview_light_background"
+                android:text="@string/add"/>
+
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</FrameLayout>

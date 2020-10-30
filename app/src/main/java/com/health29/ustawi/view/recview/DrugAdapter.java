@@ -1,19 +1,20 @@
 package com.health29.ustawi.view.recview;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.health29.ustawi.R;
 import com.health29.ustawi.models.Drug;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by derrick.kaffo on 13/10/2020.
@@ -22,6 +23,13 @@ import java.util.List;
 public class DrugAdapter extends RecyclerView.Adapter<DrugAdapter.DrugViewHolder> {
 
     List<Drug> mDrugs = new ArrayList<>();
+   Context mContext;
+
+    public DrugAdapter(Context context, ArrayList<Drug>drugs) {
+        mContext = context;
+       mDrugs = drugs;
+
+    }
 
     @NonNull
     @Override

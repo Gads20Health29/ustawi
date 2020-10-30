@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.userConsultations.DrugsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.userConsultation.UserConsultationFragment">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/list_item" />
+        tools:listitem="@layout/consultation_list_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -23,4 +24,4 @@
         android:contentDescription="@string/add_new_drug"
         app:backgroundTint="#4bb6ef" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

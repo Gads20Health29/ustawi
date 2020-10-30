@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -20,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +32,7 @@ import com.health29.ustawi.R;
 import com.health29.ustawi.utils.Constant;
 import com.health29.ustawi.utils.Util;
 import com.health29.ustawi.view.activities.PharmacyActivity;
+import com.health29.ustawi.view.activities.UserActivity;
 import com.orhanobut.hawk.Hawk;
 
 import java.util.ArrayList;
@@ -37,11 +40,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.content.ContentValues.TAG;
+
 public class Registre1Fragment extends Fragment {
 
 
-    @BindView(R.id.mSpinner)
-    AppCompatSpinner mSpinner;
+
 
     @BindView(R.id.mLoginEditText)
     EditText mLoginEditText;
@@ -73,22 +77,13 @@ public class Registre1Fragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_registre1, container, false);
         ButterKnife.bind(this, view);
 
-        initSpinner();
+        //initSpinner();
 
         mNavController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         return view;
     }
 
     //Initialisation of type count spinner
-    public void initSpinner(){
-        typeCount.add("User");
-        typeCount.add("Pharmacy");
-        typeCount.add("Doctor");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-            android.R.layout.simple_spinner_item, typeCount);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinner.setAdapter(adapter);
-    }
 
 
     //Launch activity or fragment
@@ -99,19 +94,12 @@ public class Registre1Fragment extends Fragment {
         fstore=FirebaseFirestore.getInstance();
         if (isValidate(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString(), mPassWordConfirmeEditText.getText().toString())){
 
-            if (mSpinner.getSelectedItemPosition() == 0){
                 launchActivity();
                 //call launch activity methode here and save data in firestore
                 Log.d("tag","fff");
 
-            }else {
-                insertSharePreference(mLoginEditText.getText().toString(),
-                        mPassWordEditText.getText().toString(),
-                        mPassWordConfirmeEditText.getText().toString(),
-                        mSpinner.getSelectedItemPosition());
-              mNavController.navigate(R.id.regirstre1Toregirstre2);
             }
-        }else{
+        else{
             util.showToastMessage("Resolve error");
         }
 
@@ -168,7 +156,14 @@ public class Registre1Fragment extends Fragment {
 
                 df.set(userInfo);
 
-                startActivity(new Intent(getActivity(), PharmacyActivity.class));
+                startActivity(new Intent(getActivity(), UserActivity.class));
+                getActivity().finish();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG,"Tag",e);
             }
         });
     }
