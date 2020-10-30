@@ -1,5 +1,6 @@
 package com.health29.ustawi.view.fragments.drugs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.health29.ustawi.AddDrugActivity;
 import com.health29.ustawi.R;
 import com.health29.ustawi.models.Drug;
+import com.health29.ustawi.view.activities.AddConsultationActivity;
 import com.health29.ustawi.view.recview.DrugAdapter;
 
 import java.util.List;
@@ -41,6 +44,14 @@ public class DrugsFragment extends Fragment {
             public void onChanged(List<Drug> drugs) {
 
                 mAdapter.setDrugs(drugs);
+            }
+        });
+        FloatingActionButton fab = mRoot.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View pView) {
+                Intent intent = new Intent(getActivity(), AddDrugActivity.class);
+                startActivity(intent);
             }
         });
         return mRoot;

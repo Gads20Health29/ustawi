@@ -91,8 +91,8 @@ public class Registre2Fragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_registre2, container, false);
         ButterKnife.bind(this, view);
-        initSpecialisationSpinner();
-        initUserTypeSpinner();
+//        initSpecialisationSpinner();
+//        initUserTypeSpinner();
         fstore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
 
@@ -133,25 +133,25 @@ public class Registre2Fragment extends Fragment {
     }
 
 
-    public void initUserTypeSpinner(){
-        typeCount.add("Pharmacy");
-        typeCount.add("Doctor");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                R.layout.spinner_item, typeCount);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mAccountTypeSpinner.setAdapter(adapter);
-    }
+//    public void initUserTypeSpinner(){
+//        typeCount.add("Pharmacy");
+//        typeCount.add("Doctor");
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+//                R.layout.spinner_item, typeCount);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        mAccountTypeSpinner.setAdapter(adapter);
+//    }
 
     //Initialisation on specialization spinner
-    public void initSpecialisationSpinner() {
-        specialization.add("Gynecology");
-        specialization.add("Surgery");
-        specialization.add("Pediatrics");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                R.layout.spinner_item, specialization);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpecializationSpinner.setAdapter(adapter);
-    }
+//    public void initSpecialisationSpinner() {
+//        specialization.add("Gynecology");
+//        specialization.add("Surgery");
+//        specialization.add("Pediatrics");
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+//                R.layout.spinner_item, specialization);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        mSpecializationSpinner.setAdapter(adapter);
+//    }
 
 
     private void doctorAccountAuth() {
@@ -185,7 +185,7 @@ public class Registre2Fragment extends Fragment {
                         getActivity().finish();
 
                     }).addOnFailureListener(e -> {
-    //                        Snackbar.make(getView(), "This is main activity", Snackbar.LENGTH_LONG).show();
+    //                        Snackbar.make(getView(), "This is main_menu.xml activity", Snackbar.LENGTH_LONG).show();
                         Log.d("balabala", e.toString());
                     });
         }
