@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -48,6 +49,10 @@ public class LoginFragment extends Fragment {
     EditText mPassWordEditText;
 
 
+    @BindView(R.id.mLoginProgressbar)
+    ProgressBar mLoginProgressbar;
+
+
     @BindView(R.id.mLoginUserTypeSpinner)
     AppCompatSpinner mLoginUserTypeSpinner;
 
@@ -75,6 +80,7 @@ public class LoginFragment extends Fragment {
 
         mButton = view.findViewById(R.id.mButtonNext);
         mButton.setOnClickListener(view -> {
+            mLoginProgressbar.setVisibility(View.VISIBLE);
            launchActivity();
         });
         ButterKnife.bind(this, view);
@@ -155,6 +161,7 @@ public class LoginFragment extends Fragment {
                 }
             }).addOnFailureListener(e -> {
                 FirebaseAuth.getInstance().signOut();
+                mLoginProgressbar.setVisibility(View.GONE);
                 Snackbar snackbar = Snackbar.make(view.getRootView(), e.getMessage(),Snackbar.LENGTH_LONG);
                 snackbar.getView().setBackgroundColor(getResources().getColor(R.color.errorColor));
                 snackbar.show();
@@ -170,6 +177,7 @@ public class LoginFragment extends Fragment {
                 startActivity(intent);
                 getActivity().finish();
             }else {
+               mLoginProgressbar.setVisibility(View.GONE);
                FirebaseAuth.getInstance().signOut();
                Snackbar snackbar = Snackbar.make(view.getRootView(), "User does not exist as a "+ accountType,Snackbar.LENGTH_LONG);
                snackbar.getView().setBackgroundColor(getResources().getColor(R.color.warningColor));
@@ -178,6 +186,7 @@ public class LoginFragment extends Fragment {
             }
 
         }).addOnFailureListener(e -> {
+            mLoginProgressbar.setVisibility(View.GONE);
             FirebaseAuth.getInstance().signOut();
             Snackbar snackbar = Snackbar.make(view.getRootView(), e.getMessage(),Snackbar.LENGTH_LONG);
             snackbar.getView().setBackgroundColor(getResources().getColor(R.color.errorColor));

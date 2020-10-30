@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -18,9 +19,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -49,6 +53,11 @@ public class Registre1Fragment extends Fragment {
 
     @BindView(R.id.mPassWordEditText)
     EditText mPassWordEditText;
+
+
+    @BindView(R.id.mRegister1Progressbar)
+    ProgressBar mRegister1Progressbar;
+
 
     @BindView(R.id.mPassWordConfirmeEditText)
     EditText mPassWordConfirmeEditText;
@@ -93,25 +102,14 @@ public class Registre1Fragment extends Fragment {
     //Launch activity or fragment
     @OnClick(R.id.mButtonNext)
     public void launchRegistreFragment(){
-
+        mRegister1Progressbar.setVisibility(View.VISIBLE);
         fauth=FirebaseAuth.getInstance();
         fstore=FirebaseFirestore.getInstance();
 
         if (isValidate(mLoginEditText.getText().toString(), mPassWordEditText.getText().toString(), mPassWordConfirmeEditText.getText().toString())){
-//            if (mSpinner.getSelectedItemPosition() == 0){
                 launchActivity();
                 Log.d("tag","fff");
-
-//            }else {
-//                insertSharePreference(mLoginEditText.getText().toString(),
-//                mPassWordEditText.getText().toString(),
-//                mPassWordConfirmeEditText.getText().toString(),
-//                mSpinner.getSelectedItemPosition());
-//                mNavController.navigate(R.id.regirstre1Toregirstre2);
-//            }
-
         }else{
-//            util.showToastMessage("Resolve error");
             Toast.makeText(getActivity(),"Please fill in all fields ",Toast.LENGTH_LONG).show();
         }
 
@@ -169,14 +167,17 @@ public class Registre1Fragment extends Fragment {
                 patientModel.setUserRef(df);
 
                 df.set(patientModel);
-
-
-//                Map<String, Object> userInfo = new HashMap<>();
-//                userInfo.put("EmailAddress",mLoginEditText.getText().toString());
-//                userInfo.put("isUser", "1");
-
                 startActivity(new Intent(getActivity(), PharmacyActivity.class));
+                mRegister1Progressbar.setVisibility(View.GONE);
                 getActivity().finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                mRegister1Progressbar.setVisibility(View.GONE);
+                Snackbar snackbar = Snackbar.make(view.getRootView(), e.getMessage(),Snackbar.LENGTH_LONG);
+                snackbar.getView().setBackgroundColor(getResources().getColor(R.color.errorColor));
+                snackbar.show();
             }
         });
     }

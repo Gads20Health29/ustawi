@@ -2,6 +2,7 @@ package com.health29.ustawi.view.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.health29.ustawi.R;
+import com.health29.ustawi.models.PharmacyModel;
 import com.health29.ustawi.utils.Util;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,7 @@ public class PharmacyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pharmacy);
         BottomNavigationView navView = findViewById(R.id.nav_view);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(

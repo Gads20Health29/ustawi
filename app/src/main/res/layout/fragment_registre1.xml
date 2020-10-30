@@ -107,6 +107,14 @@
 
         </LinearLayout>
 
+        <ProgressBar
+            android:id="@+id/mRegister1Progressbar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content" />
+
     </RelativeLayout>
 
 </FrameLayout>
