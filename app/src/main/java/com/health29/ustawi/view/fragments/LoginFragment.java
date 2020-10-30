@@ -35,6 +35,7 @@ import com.health29.ustawi.R;
 import com.health29.ustawi.utils.Util;
 import com.health29.ustawi.view.activities.DoctorActivity;
 import com.health29.ustawi.view.activities.PharmacyActivity;
+import com.health29.ustawi.view.activities.UserActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,7 +156,7 @@ public class LoginFragment extends Fragment {
 
                         default:
                             //Redirect to patient/user screen
-//                            checkUserAccessLevel(firebaseFirestore.collection("Patients").document(authResult.getUser().getUid()), new Intent(getActivity(),Patients.class), "Patient");
+                            checkUserAccessLevel(firebaseFirestore.collection("Patients").document(authResult.getUser().getUid()), new Intent(getActivity(), UserActivity.class), "Patient");
                     }
 
                 }
