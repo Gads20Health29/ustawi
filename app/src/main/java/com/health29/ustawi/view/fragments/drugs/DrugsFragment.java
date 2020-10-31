@@ -2,7 +2,6 @@ package com.health29.ustawi.view.fragments.drugs;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
-import com.health29.ustawi.AddDrugActivity;
+import com.health29.ustawi.view.activities.AddDrugActivity;
 import com.health29.ustawi.R;
 import com.health29.ustawi.models.Drug;
-import com.health29.ustawi.models.PharmacyModel;
-import com.health29.ustawi.view.activities.AddConsultationActivity;
 import com.health29.ustawi.view.recview.DrugAdapter;
 
 import java.util.List;
