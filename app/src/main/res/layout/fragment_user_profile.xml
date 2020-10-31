@@ -7,8 +7,7 @@
     android:background="@color/colorWhite"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    android:paddingBottom="50dp"
-    tools:context=".view.fragments.profile.ProfileFragment">
+    android:paddingBottom="50dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
